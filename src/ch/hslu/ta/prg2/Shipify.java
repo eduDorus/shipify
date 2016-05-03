@@ -5,6 +5,8 @@
  */
 package ch.hslu.ta.prg2;
 
+import ch.hslu.ta.prg2.view.*;
+
 /**
  *
  * @author julian
@@ -16,6 +18,14 @@ public class Shipify {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //FRAMES AND PANELS
+        //=================
+        mainframe mainframe = new mainframe();
+       
+        
+        
+        
     }
     
 }
