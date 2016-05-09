@@ -22,4 +22,14 @@ public class Gamestate implements Serializable {
 
     }
 
+    public Gamestate(String name, boolean againstBot) {
+
+        this(name);
+
+        if (againstBot) {
+            player2 = new Player("bot");
+        }
+
+    }
+
 }

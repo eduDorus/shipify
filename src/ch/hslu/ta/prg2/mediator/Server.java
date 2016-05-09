@@ -27,7 +27,9 @@ public class Server implements ServerInterface{
 
     @Override
     public Gamestate newBotGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        this.state = new Gamestate("localplayer", true);
+        return state;
     }
 
     @Override
