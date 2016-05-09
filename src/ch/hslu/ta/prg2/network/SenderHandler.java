@@ -1,5 +1,6 @@
 package ch.hslu.ta.prg2.network;
 
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -7,9 +8,9 @@ import java.net.Socket;
 class SenderHandler implements Runnable {
 
     private final Socket client;
-    private final TestObject object;
+    private final Gamestate object;
 
-    public SenderHandler(Socket c, TestObject o) {
+    public SenderHandler(Socket c, Gamestate o) {
         client = c;
         object = o;
     }

@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.hslu.ta.prg2.network;
 
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Dorus Janssens
- */
 class ReceiverHandler implements Runnable {
 
     private final Socket client;
@@ -28,7 +20,7 @@ class ReceiverHandler implements Runnable {
         try {
             ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
             
-            TestObject game = ((TestObject)ois.readObject());
+            Gamestate game = ((Gamestate)ois.readObject());
             
             System.out.println(game.toString());
 
@@ -39,6 +31,5 @@ class ReceiverHandler implements Runnable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SenderHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
+    }  
 }
