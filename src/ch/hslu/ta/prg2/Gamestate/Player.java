@@ -17,6 +17,12 @@ public class Player {
     
     private ArrayList<Ship> ships;
     private ArrayList<Shoot> shoots;
+
+    public Player(String name) {
+        this.name = name;
+    }
+    
+    
     
     
 }

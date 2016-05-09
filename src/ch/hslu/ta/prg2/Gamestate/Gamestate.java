@@ -9,13 +9,17 @@ import java.io.Serializable;
 
 /**
  *
- * 
+ *
  */
 public class Gamestate implements Serializable {
-    
+
     private Player player1;
     private Player player2;
-    
-    
-    
+
+    public Gamestate(String name) {
+
+        player1 = new Player(name);
+
+    }
+
 }
