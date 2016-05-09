@@ -21,7 +21,7 @@ public class Server implements ServerInterface{
     
     @Override
     public Gamestate newGame() {
-        state = new Gamestate();
+        state = new Gamestate("localplayer");
         return state;
     }
 
