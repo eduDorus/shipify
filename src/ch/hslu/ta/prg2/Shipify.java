@@ -21,7 +21,7 @@ public class Shipify {
         
         //FRAMES AND PANELS
         //=================
-        mainframe mainframe = new mainframe();
+        MainFrame mainframe = new MainFrame();
        
         
         
