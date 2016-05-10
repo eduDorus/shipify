@@ -3,7 +3,9 @@ package ch.hslu.ta.prg2.mediator;
 
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
+import ch.hslu.ta.prg2.Gamestate.Ship;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Server implements ServerInterface{
     
@@ -39,9 +41,21 @@ public class Server implements ServerInterface{
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
         
         
-        for(ArrayList<Position> ship : ships){
+        Iterator itr1 = ships.iterator();
+        
+        while(itr1.hasNext()){
             
-            this.state.getPlayer1().getShips().add(null);
+            ArrayList<ArrayList<Position>> current = (ArrayList<ArrayList<Position>>) itr1.next();
+            
+            Iterator itr2 = current.iterator();
+            
+            while(itr2.hasNext()){
+                
+                Ship current2 =  (Ship)itr2.next();
+                
+                this.state.getPlayer1().getShips().add(current2);
+                
+            }
             
         }
         
