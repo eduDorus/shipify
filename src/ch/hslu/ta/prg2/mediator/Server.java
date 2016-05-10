@@ -2,6 +2,8 @@
 package ch.hslu.ta.prg2.mediator;
 
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
+import ch.hslu.ta.prg2.Gamestate.Position;
+import java.util.ArrayList;
 
 public class Server implements ServerInterface{
     
@@ -12,6 +14,7 @@ public class Server implements ServerInterface{
     public static Server getInstance() {
         return ServerHolder.INSTANCE;
     }
+
     
     private static class ServerHolder {
 
@@ -33,13 +36,12 @@ public class Server implements ServerInterface{
     }
 
     @Override
-    public Gamestate setShips() {
+    public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Gamestate shoot() {
+    public Gamestate shoot(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
