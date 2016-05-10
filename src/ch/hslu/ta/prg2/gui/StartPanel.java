@@ -14,9 +14,9 @@ public class StartPanel extends JPanel {
     JLabel lbl_declareName;
     JTextField txt_nameField;
 
-    public StartPanel(int WINDOW_HEIGHT, int WINDOW_LENGTH) {
+    public StartPanel() {
 
-        this.setSize(WINDOW_HEIGHT, WINDOW_LENGTH);
+        this.setSize(1200, 800);
 
         createComponents();
 
@@ -36,11 +36,11 @@ public class StartPanel extends JPanel {
 
     //SET OPTIONS        
     private void setOptions() {
-        this.setLayout(new BorderLayout());
+        this.setLayout(null);
 
-//        lbl_declareName.setBounds(800, 800, 100, 50);
-//        txt_nameField.setBounds(0, 0, 100, 100);
-//        btn_start.setBounds(400, 400, 1000, 1000);
+        lbl_declareName.setBounds(800, 800, 100, 50);
+        txt_nameField.setBounds(0, 0, 100, 100);
+        btn_start.setBounds(400, 400, 200, 50);
     }
 
     private void addObjects() {

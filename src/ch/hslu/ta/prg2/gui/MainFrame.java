@@ -14,11 +14,8 @@ public class MainFrame extends JFrame {
     public MainFrame() {
 
         //CREATE STARTPANEL
-        StartPanel startpanel = new StartPanel(WINDOW_HEIGHT, WINDOW_LENGTH);
-
         setOptions();
 
-        addObjects(startpanel);
     }
 
     //SET OPTIONS
@@ -31,10 +28,4 @@ public class MainFrame extends JFrame {
     }
 
     //ADD THINGS
-    private void addObjects(StartPanel startpanel) {
-
-        this.add(startpanel);
-
-    }
-
 }

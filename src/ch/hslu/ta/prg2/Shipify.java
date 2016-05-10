@@ -5,7 +5,8 @@
  */
 package ch.hslu.ta.prg2;
 
-import ch.hslu.ta.prg2.gui.MainFrame;
+import ch.hslu.ta.prg2.gui.StartPanelController;
+import ch.hslu.ta.prg2.gui.SuperController;
 
 /**
  *
@@ -18,14 +19,17 @@ public class Shipify {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        //FRAMES AND PANELS
+
+        //GUI SUPER CONTROLLER
         //=================
-        MainFrame mainframe = new MainFrame();
-       
-        
-        
-        
+        SuperController superController = new SuperController();
+
+        createControllers();
+
     }
-    
+
+    private static void createControllers() {
+        StartPanelController startPanelController1 = new StartPanelController();
+    }
+
 }
