@@ -1,4 +1,4 @@
-package ch.hslu.ta.prg2.view;
+package ch.hslu.ta.prg2.gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

@@ -5,7 +5,7 @@
  */
 package ch.hslu.ta.prg2;
 
-import ch.hslu.ta.prg2.view.*;
+import ch.hslu.ta.prg2.gui.MainFrame;
 
 /**
  *
