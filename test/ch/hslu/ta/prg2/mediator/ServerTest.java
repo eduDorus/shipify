@@ -19,6 +19,7 @@ public class ServerTest {
 
     @BeforeClass
     public static void setUpClass() {
+        Server.getInstance().newGame();
     }
 
     @AfterClass
@@ -27,6 +28,7 @@ public class ServerTest {
 
     @Before
     public void setUp() {
+        
     }
 
     @After

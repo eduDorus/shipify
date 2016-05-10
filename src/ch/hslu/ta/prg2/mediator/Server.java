@@ -66,6 +66,7 @@ public class Server implements ServerInterface{
 
     @Override
     public Gamestate shoot(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        state.getPlayer1().addShoot(x, y);
+        return state;
     }
 }
