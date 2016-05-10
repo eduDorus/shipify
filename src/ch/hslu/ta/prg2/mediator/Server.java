@@ -37,7 +37,17 @@ public class Server implements ServerInterface{
 
     @Override
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        for(ArrayList<Position> ship : ships){
+            
+            this.state.getPlayer1().getShips().add(null);
+            
+        }
+        
+        
+        
+        return null;
     }
 
     @Override

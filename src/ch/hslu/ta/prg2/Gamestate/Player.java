@@ -20,7 +20,20 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+        
+        this.ships = new ArrayList<>();
+        this.shoots = new ArrayList<>();
+        
     }
+
+    public ArrayList<Ship> getShips() {
+        return ships;
+    }
+
+    public ArrayList<Shoot> getShoots() {
+        return shoots;
+    }
+    
     
     
     
