@@ -9,7 +9,7 @@ public class MainFrame extends JFrame {
 
     //Constants
     private static final int WINDOW_HEIGHT = 800;
-    private static final int WINDOW_LENGTH = 1200 + 27;
+    private static final int WINDOW_LENGTH = 1200;
 
     public MainFrame() {
 
