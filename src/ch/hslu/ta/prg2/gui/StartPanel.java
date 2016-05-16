@@ -49,7 +49,7 @@ public class StartPanel extends JPanel {
         btn_start.setBounds(650, 400, 100, 50);
         btn_start.addActionListener((ActionEvent e) -> {
             
-        SuperController.startButtonActionListener();    
+        SuperController.startButtonClicked();    
             
         });
     }

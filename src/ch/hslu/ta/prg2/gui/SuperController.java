@@ -12,6 +12,7 @@ public class SuperController {
     static MainFrame mainframe;
     static StartPanel startpanel;
     static HomePanel homepanel;
+    static SaveGamePanel savegamepanel;
     private static String playername;
 
     public SuperController() {
@@ -35,13 +36,31 @@ public class SuperController {
 
     private static void createHomePanel() {
         homepanel = new HomePanel();
-        addPanel(homepanel);
+
     }
 
-    public static void startButtonActionListener() {
+    private static void createSaveGamePanel() {
+        savegamepanel = new SaveGamePanel();
+
+    }
+
+    public static void startButtonClicked() {
         createHomePanel();
         mainframe.remove(startpanel);
         addPanel(homepanel);
         playername = startpanel.txt_nameField.getText();
     }
+
+    public static void localButtonClicked() {
+        createSaveGamePanel();
+        mainframe.remove(homepanel);
+        addPanel(savegamepanel);
+      }
+
+    public static void lanButtonClicked() {
+//        createSaveGamePanel();
+//        mainframe.remove(homepanel);
+//        addPanel(homepanel);
+        }
+
 }

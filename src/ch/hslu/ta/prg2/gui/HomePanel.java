@@ -46,11 +46,11 @@ public class HomePanel extends JPanel {
         btn_LAN.setBounds(450, 400, 300, 50);
 
         btn_LOCAL.addActionListener((ActionEvent e) -> {
-            SuperController.startButtonActionListener();
+            SuperController.localButtonClicked();
         });
 
         btn_LAN.addActionListener((ActionEvent e) -> {
-            SuperController.startButtonActionListener();
+            SuperController.lanButtonClicked();
         });
     }
 
