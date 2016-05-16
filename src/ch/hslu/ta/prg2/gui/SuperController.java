@@ -1,5 +1,6 @@
 package ch.hslu.ta.prg2.gui;
 
+import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
@@ -11,6 +12,7 @@ public class SuperController {
     static MainFrame mainframe;
     static StartPanel startpanel;
     static HomePanel homepanel;
+    private static String playername;
 
     public SuperController() {
         createMainFrame();
@@ -40,7 +42,6 @@ public class SuperController {
         createHomePanel();
         mainframe.remove(startpanel);
         addPanel(homepanel);
-        
-  }
-
+        playername = startpanel.txt_nameField.getText();
+    }
 }
