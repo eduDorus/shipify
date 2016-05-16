@@ -2,17 +2,14 @@ package ch.hslu.ta.prg2.gui;
 /**
  *
  */
-public class StartPanelController extends SuperController {
+public class StartPanelController{
     
      StartPanel startpanel;
 
     
     public StartPanelController(){
         
-        startpanel = new StartPanel();
-        
-        super.addPanel(startpanel);
-    }
+        }
     
     
 

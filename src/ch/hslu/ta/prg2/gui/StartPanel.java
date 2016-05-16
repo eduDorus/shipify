@@ -1,7 +1,7 @@
 package ch.hslu.ta.prg2.gui;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
@@ -13,41 +13,52 @@ public class StartPanel extends JPanel {
     JButton btn_start;
     JLabel lbl_declareName;
     JTextField txt_nameField;
-
+    
     public StartPanel() {
-
+        
         this.setSize(1200, 800);
-
+        
         createComponents();
-
+        
         addObjects();
         setOptions();
-
+        
     }
 
     //CREATE OBJECTS
     private void createComponents() {
-
+        
         lbl_declareName = new JLabel("Bitte gib deinen Namen an:");
         txt_nameField = new JTextField();
         btn_start = new JButton("Start");
-
+        
     }
 
     //SET OPTIONS        
     private void setOptions() {
         this.setLayout(null);
-
-        lbl_declareName.setBounds(800, 800, 100, 50);
-        txt_nameField.setBounds(0, 0, 100, 100);
-        btn_start.setBounds(400, 400, 200, 50);
+        
+        Font font1 = new Font("SansSerif", 1, 20);
+        
+        lbl_declareName.setFont(font1);
+        
+        btn_start.setFont(font1);
+        
+        lbl_declareName.setBounds(500, 300, 300, 50);
+        txt_nameField.setBounds(500, 400, 250, 50);
+        btn_start.setBounds(650, 500, 100, 50);
+        btn_start.addActionListener((ActionEvent e) -> {
+            
+        SuperController.StartButtonActionListener();    
+            
+        });
     }
-
+    
     private void addObjects() {
         this.add(lbl_declareName);
         this.add(txt_nameField);
         this.add(btn_start);
-
+        
     }
-
+    
 }

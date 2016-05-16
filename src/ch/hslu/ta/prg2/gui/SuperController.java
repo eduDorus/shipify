@@ -1,5 +1,6 @@
 package ch.hslu.ta.prg2.gui;
 
+import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
 /**
@@ -7,12 +8,17 @@ import javax.swing.JPanel;
  */
 public class SuperController {
 
-    MainFrame mainframe;
+    static MainFrame mainframe;
+    static StartPanel startpanel;
+    static HomePanel homepanel;
 
     public SuperController() {
 
-        createMainFrame();
-
+       
+      createMainFrame();
+       
+      createStartPanel();
+       
     }
 
     private void createMainFrame() {
@@ -21,9 +27,31 @@ public class SuperController {
 
     }
 
-    protected void addPanel(JPanel panel) {
+    private static void addPanel(JPanel panel) {
         mainframe.add(panel);
+        mainframe.repaint();
 
+    }
+    
+    private void createStartPanel(){
+        startpanel = new StartPanel();
+        addPanel(startpanel);    
+    }
+    
+    private static void createHomePanel(){
+        homepanel = new HomePanel();
+        addPanel(homepanel);
+    }
+    
+    public static void StartButtonActionListener (){
+        createHomePanel();
+        
+        mainframe.remove(startpanel);
+        
+        addPanel(homepanel);
+        
+        
+        
     }
 
 }

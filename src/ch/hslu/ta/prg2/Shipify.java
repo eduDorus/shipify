@@ -24,12 +24,11 @@ public class Shipify {
         //=================
         SuperController superController = new SuperController();
 
-        createControllers();
+        
+        
+        
 
     }
 
-    private static void createControllers() {
-        StartPanelController startPanelController1 = new StartPanelController();
-    }
 
 }
