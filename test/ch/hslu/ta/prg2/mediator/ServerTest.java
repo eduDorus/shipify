@@ -84,7 +84,7 @@ public class ServerTest {
         
         Server instance = Server.getInstance();
         Gamestate expResult = null;
-        Gamestate result = instance.setShips(ships);
+        Gamestate result = instance.setShips("localplayer", ships);
         
         assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(0), 10);
         assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(1), 10);
@@ -96,7 +96,7 @@ public class ServerTest {
     public void testShoot() {
         int x = 4;
         int y = 3;
-        Gamestate result = Server.getInstance().shoot(x, y);
+        Gamestate result = Server.getInstance().shoot("localplayer", x, y);
         Field f = result.getPlayer1().getField()[4][3];
         //assertNotEquals(Field.WATER, f);
         assertThat(f, not(Field.WATER));

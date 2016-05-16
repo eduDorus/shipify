@@ -35,7 +35,7 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
+    public Gamestate setShips(String playername, ArrayList<ArrayList<Position>> ships) {
         
         for(ArrayList<Position> positions : ships){
             Ship s = new Ship(positions);
@@ -45,7 +45,7 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate shoot(int x, int y) {
+    public Gamestate shoot(String playername, int x, int y) {
         state.getPlayer1().addShoot(x, y);
         return state;
     }
