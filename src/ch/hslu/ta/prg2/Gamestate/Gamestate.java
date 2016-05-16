@@ -32,12 +32,26 @@ public class Gamestate implements Serializable {
 
     }
 
-    public Player getPlayer1() {
-        return player1;
+    public Player getPlayer(String name){
+        if(this.player1.getName().equals(name)){
+            return player1;
+        }
+        else if(this.player2.getName().equals(name)){
+            return player2;
+        }
+        return null;
     }
-
-    public Player getPlayer2() {
-        return player2;
+    
+    public Player getOponent(String name){
+        Player whoAmI = this.getPlayer(name);
+        if(whoAmI.equals(player1)){
+            return this.player2;
+        }
+        else if(whoAmI.equals(player2)){
+            return this.player1;
+        }
+        
+        return null;
     }
     
     

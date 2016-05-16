@@ -39,14 +39,14 @@ public class Server implements ServerInterface {
         
         for(ArrayList<Position> positions : ships){
             Ship s = new Ship(positions);
-            this.state.getPlayer1().getShips().add(s);
+            this.state.getPlayer(playername).getShips().add(s);
         };
         return state;
     }
 
     @Override
     public Gamestate shoot(String playername, int x, int y) {
-        state.getPlayer1().addShoot(x, y);
+        state.getPlayer(playername).addShoot(x, y);
         return state;
     }
 }
