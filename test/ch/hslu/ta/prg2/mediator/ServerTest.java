@@ -1,4 +1,3 @@
-
 package ch.hslu.ta.prg2.mediator;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
@@ -19,7 +18,7 @@ public class ServerTest {
 
     @BeforeClass
     public static void setUpClass() {
-        Server.getInstance().newGame();
+        Server.getInstance().newGame("localplayer");
     }
 
     @AfterClass
@@ -28,7 +27,7 @@ public class ServerTest {
 
     @Before
     public void setUp() {
-        
+
     }
 
     @After
@@ -49,7 +48,7 @@ public class ServerTest {
         System.out.println("newGame");
         Server instance = null;
         Gamestate expResult = null;
-        Gamestate result = instance.newGame();
+        Gamestate result = instance.newGame("localplayer");
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
@@ -59,7 +58,7 @@ public class ServerTest {
         System.out.println("newBotGame");
         Server instance = null;
         Gamestate expResult = null;
-        Gamestate result = instance.newBotGame();
+        Gamestate result = instance.newBotGame("localplayer");
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
@@ -83,10 +82,10 @@ public class ServerTest {
         Field f = result.getPlayer1().getField()[4][3];
         assertNotEquals(Field.WATER, f);
     }
-    
+
     @Test
     public void testGetField() {
-        Gamestate testGame =  Server.getInstance().newBotGame();
+        Gamestate testGame = Server.getInstance().newBotGame("localplayer");
         Field[][] fields = testGame.getPlayer1().getField();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
@@ -94,7 +93,5 @@ public class ServerTest {
 
             }
         }
-        
-        
     }
 }
