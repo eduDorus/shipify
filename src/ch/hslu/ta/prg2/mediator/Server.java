@@ -37,23 +37,10 @@ public class Server implements ServerInterface {
 
     @Override
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
-
-        Iterator<ArrayList<Position>> itr1 = ships.iterator();
-
-        while (itr1.hasNext()) {
-
-            ArrayList<Position> current = itr1.next();
-            Iterator<Position> itr2 = current.iterator();
-
-            while (itr2.hasNext()) {
-
-                Position current2 = itr2.next();
-
-                this.state.getPlayer1().getShips().add(new Ship(current2));
-            }
-
-        }
-
+        
+        for(ArrayList<Position> positions : ships){
+            Ship s = new Ship(positions);
+        };
         return state;
     }
 

@@ -7,11 +7,10 @@ public class Ship {
     
     private ArrayList<Position> positions;
 
-    public Ship(Position positions) {
+    public Ship(ArrayList<Position> positions) {
         this.positions = new ArrayList<>();
-        this.positions.add(positions);
+        this.positions.addAll(positions);
     }
-    
     
     public ArrayList<Position> getPositions() {
         return positions;
