@@ -5,7 +5,6 @@
  */
 package ch.hslu.ta.prg2.network;
 
-import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -4,7 +4,6 @@ import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.Gamestate.Ship;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Server implements ServerInterface {
 

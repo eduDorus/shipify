@@ -83,5 +83,18 @@ public class ServerTest {
         Field f = result.getPlayer1().getField()[4][3];
         assertNotEquals(Field.WATER, f);
     }
+    
+    @Test
+    public void testGetField() {
+        Gamestate testGame =  Server.getInstance().newBotGame();
+        Field[][] fields = testGame.getPlayer1().getField();
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y < 10; y++) {
+                assertEquals(Field.WATER, fields[x][y]);
 
+            }
+        }
+        
+        
+    }
 }
