@@ -40,6 +40,7 @@ public class SuperController {
         createHomePanel();
         mainframe.remove(startpanel);
         addPanel(homepanel);
+        
   }
 
 }
