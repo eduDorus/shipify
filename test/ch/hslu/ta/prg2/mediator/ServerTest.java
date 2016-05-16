@@ -70,13 +70,13 @@ public class ServerTest {
     public void testSetShips() {
 
         ArrayList<Position> ship1 = new ArrayList<>();
-        ship1.add(new Position(10, 10));
-        ship1.add(new Position(10, 11));
-        ship1.add(new Position(10, 12));
+        ship1.add(new Position(6, 6));
+        ship1.add(new Position(6, 7));
+        ship1.add(new Position(6, 8));
 
         ArrayList<Position> ship2 = new ArrayList<>();
-        ship2.add(new Position(20, 21));
-        ship2.add(new Position(20, 22));
+        ship2.add(new Position(2, 2));
+        ship2.add(new Position(2, 3));
 
         System.out.println("setShips");
 
@@ -85,12 +85,21 @@ public class ServerTest {
         ships.add(ship2);
 
         Server instance = Server.getInstance();
-        Gamestate expResult = null;
+        //Gamestate expResult = null;
         Gamestate result = instance.setShips(myName, ships);
 
-        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(0), 10);
-        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(1), 10);
-
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(0).getX(), 6);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(0).getY(), 6);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(1).getX(), 6);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(1).getY(), 7);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(2).getX(), 6);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(2).getY(), 8);
+        
+        assertEquals(result.getPlayer(myName).getShips().get(1).getPositions().get(0).getX(), 2);
+        assertEquals(result.getPlayer(myName).getShips().get(1).getPositions().get(0).getY(), 2);
+        assertEquals(result.getPlayer(myName).getShips().get(1).getPositions().get(1).getX(), 2);
+        assertEquals(result.getPlayer(myName).getShips().get(1).getPositions().get(1).getY(), 3);
+        
         //fail("The test case is a prototype.");
     }
 
