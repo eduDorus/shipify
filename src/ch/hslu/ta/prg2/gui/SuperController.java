@@ -36,12 +36,10 @@ public class SuperController {
 
     private static void createHomePanel() {
         homepanel = new HomePanel();
-
     }
 
     private static void createSaveGamePanel() {
         savegamepanel = new SaveGamePanel();
-
     }
 
     public static void startButtonClicked() {
@@ -55,12 +53,10 @@ public class SuperController {
         createSaveGamePanel();
         mainframe.remove(homepanel);
         addPanel(savegamepanel);
-      }
+        Server.getInstance().newBotGame(playername);
+    }
 
     public static void lanButtonClicked() {
-//        createSaveGamePanel();
-//        mainframe.remove(homepanel);
-//        addPanel(homepanel);
-        }
-
+        Server.getInstance().newGame(playername);
+    }
 }
