@@ -12,6 +12,7 @@ public class GUIController {
     static StartPanel startpanel;
     static HomePanel homepanel;
     static SaveGamePanel savegamepanel;
+    static GameBoardPanel gameboardpanel;
     private static String playername;
 
     public GUIController() {
@@ -25,7 +26,7 @@ public class GUIController {
 
     private static void addPanel(JPanel panel) {
         mainframe.add(panel);
-        mainframe.repaint();
+        mainframe.setVisible(true);
     }
 
     private void createStartPanel() {
@@ -39,6 +40,10 @@ public class GUIController {
 
     private static void createSaveGamePanel() {
         savegamepanel = new SaveGamePanel();
+    }
+
+    private static void createLanPanel() {
+        gameboardpanel = new GameBoardPanel();
     }
 
     public static void startButtonClicked() {
@@ -56,6 +61,9 @@ public class GUIController {
     }
 
     public static void lanButtonClicked() {
+        createLanPanel();
+        mainframe.remove(homepanel);
+        addPanel(gameboardpanel);
         Server.getInstance().newGame(playername);
     }
 }

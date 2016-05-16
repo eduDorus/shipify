@@ -5,7 +5,6 @@
  */
 package ch.hslu.ta.prg2;
 
-import ch.hslu.ta.prg2.gui.StartPanelController;
 import ch.hslu.ta.prg2.gui.GUIController;
 
 /**
