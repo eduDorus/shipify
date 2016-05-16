@@ -1,7 +1,6 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.mediator.Server;
-import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
 /**

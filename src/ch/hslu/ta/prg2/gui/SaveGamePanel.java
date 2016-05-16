@@ -19,7 +19,7 @@ public class SaveGamePanel extends JPanel {
     JList list_savedGamesList;
 
     public SaveGamePanel() {
-        this.setSize(1200, 800);
+        this.setSize(1227, 800);
 
         createComponents();
 
@@ -35,6 +35,7 @@ public class SaveGamePanel extends JPanel {
         btn_selectGame = new JButton("Spiel starten");
         btn_newGame = new JButton("Neues Spiel");
 
+        list_savedGamesList = new JList();
     }
 
     //SET OPTIONS        
@@ -47,10 +48,11 @@ public class SaveGamePanel extends JPanel {
         btn_selectGame.setFont(font1);
         btn_newGame.setFont(font1);
 
-        btn_delGame.setBounds(450, 200, 300, 50);
-        btn_selectGame.setBounds(450, 300, 300, 50);
-        btn_newGame.setBounds(450, 400, 300, 50);
+        list_savedGamesList.setBounds(75, 75, 1048, 450);
 
+        btn_delGame.setBounds(75, 600, 300, 50);
+        btn_selectGame.setBounds(450, 600, 300, 50);
+        btn_newGame.setBounds(825, 600, 300, 50);
 //        btn_delGame.addActionListener((ActionEvent e) -> {
 //            SuperController.startButtonActionListener();
 //        });
@@ -60,10 +62,11 @@ public class SaveGamePanel extends JPanel {
 //        btn_newGame.addActionListener((ActionEvent e) -> {
 //            SuperController.startButtonActionListener();
 //        });
-
     }
 
     private void addObjects() {
+
+        this.add(list_savedGamesList);
         this.add(btn_delGame);
         this.add(btn_selectGame);
         this.add(btn_newGame);
