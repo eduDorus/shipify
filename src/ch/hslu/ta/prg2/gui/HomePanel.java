@@ -42,15 +42,15 @@ public class HomePanel extends JPanel {
         btn_LOCAL.setFont(font1);
         btn_LAN.setFont(font1);
 
-        btn_LOCAL.setBounds(500, 500, 100, 50);
-        btn_LAN.setBounds(650, 500, 100, 50);
+        btn_LOCAL.setBounds(450, 300, 300, 50);
+        btn_LAN.setBounds(450, 400, 300, 50);
 
         btn_LOCAL.addActionListener((ActionEvent e) -> {
-            SuperController.StartButtonActionListener();
+            SuperController.startButtonActionListener();
         });
 
         btn_LAN.addActionListener((ActionEvent e) -> {
-            SuperController.StartButtonActionListener();
+            SuperController.startButtonActionListener();
         });
     }
 

@@ -13,45 +13,33 @@ public class SuperController {
     static HomePanel homepanel;
 
     public SuperController() {
-
-       
-      createMainFrame();
-       
-      createStartPanel();
-       
+        createMainFrame();
+        createStartPanel();
     }
 
     private void createMainFrame() {
-
         mainframe = new MainFrame();
-
     }
 
     private static void addPanel(JPanel panel) {
         mainframe.add(panel);
         mainframe.repaint();
+    }
 
-    }
-    
-    private void createStartPanel(){
+    private void createStartPanel() {
         startpanel = new StartPanel();
-        addPanel(startpanel);    
+        addPanel(startpanel);
     }
-    
-    private static void createHomePanel(){
+
+    private static void createHomePanel() {
         homepanel = new HomePanel();
         addPanel(homepanel);
     }
-    
-    public static void StartButtonActionListener (){
+
+    public static void startButtonActionListener() {
         createHomePanel();
-        
         mainframe.remove(startpanel);
-        
         addPanel(homepanel);
-        
-        
-        
-    }
+  }
 
 }
