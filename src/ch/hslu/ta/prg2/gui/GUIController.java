@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 /**
  *
  */
-public class SuperController {
+public class GUIController {
 
     static MainFrame mainframe;
     static StartPanel startpanel;
@@ -15,7 +15,7 @@ public class SuperController {
     static SaveGamePanel savegamepanel;
     private static String playername;
 
-    public SuperController() {
+    public GUIController() {
         createMainFrame();
         createStartPanel();
     }
@@ -32,6 +32,7 @@ public class SuperController {
     private void createStartPanel() {
         startpanel = new StartPanel();
         addPanel(startpanel);
+        
     }
 
     private static void createHomePanel() {
@@ -43,6 +44,8 @@ public class SuperController {
     }
 
     public static void startButtonClicked() {
+        
+        //check if namefield is empty
         createHomePanel();
         mainframe.remove(startpanel);
         addPanel(homepanel);

@@ -16,7 +16,7 @@ public class HomePanel extends JPanel {
 
     public HomePanel() {
 
-        this.setSize(1200, 800);
+        this.setSize(1227, 800);
 
         createComponents();
 
@@ -46,11 +46,11 @@ public class HomePanel extends JPanel {
         btn_LAN.setBounds(450, 400, 300, 50);
 
         btn_LOCAL.addActionListener((ActionEvent e) -> {
-            SuperController.localButtonClicked();
+            GUIController.localButtonClicked();
         });
 
         btn_LAN.addActionListener((ActionEvent e) -> {
-            SuperController.lanButtonClicked();
+            GUIController.lanButtonClicked();
         });
     }
 
