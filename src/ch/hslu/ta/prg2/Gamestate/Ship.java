@@ -8,8 +8,8 @@ public class Ship {
     private ArrayList<Position> positions;
 
     public Ship(ArrayList<Position> positions) {
-        this.positions = new ArrayList<>();
-        this.positions.addAll(positions);
+        this.positions = positions;
+       
     }
     
     public ArrayList<Position> getPositions() {

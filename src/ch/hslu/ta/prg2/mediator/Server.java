@@ -39,6 +39,7 @@ public class Server implements ServerInterface {
         
         for(ArrayList<Position> positions : ships){
             Ship s = new Ship(positions);
+            this.state.getPlayer1().getShips().add(s);
         };
         return state;
     }

@@ -4,6 +4,7 @@ import ch.hslu.ta.prg2.Gamestate.Field;
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import java.util.ArrayList;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -65,13 +66,30 @@ public class ServerTest {
 
     @Test
     public void testSetShips() {
+        
+        ArrayList<Position> ship1 = new ArrayList<>();
+        ship1.add(new Position(10, 10));
+        ship1.add(new Position(10, 11));
+        ship1.add(new Position(10, 12));
+        
+        ArrayList<Position> ship2 = new ArrayList<>();
+        ship2.add(new Position(20, 21));
+        ship2.add(new Position(20, 22));
+        
         System.out.println("setShips");
-        ArrayList<ArrayList<Position>> ships = null;
-        Server instance = null;
+        
+        ArrayList<ArrayList<Position>> ships = new ArrayList<>();
+        ships.add(ship1);
+        ships.add(ship2);
+        
+        Server instance = Server.getInstance();
         Gamestate expResult = null;
         Gamestate result = instance.setShips(ships);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        
+        assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(0), 10);
+        assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(1), 10);
+        
+        //fail("The test case is a prototype.");
     }
 
     @Test
@@ -80,7 +98,9 @@ public class ServerTest {
         int y = 3;
         Gamestate result = Server.getInstance().shoot(x, y);
         Field f = result.getPlayer1().getField()[4][3];
-        assertNotEquals(Field.WATER, f);
+        //assertNotEquals(Field.WATER, f);
+        assertThat(f, not(Field.WATER));
+        
     }
 
     @Test
