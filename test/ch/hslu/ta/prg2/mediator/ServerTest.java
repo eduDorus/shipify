@@ -17,9 +17,11 @@ public class ServerTest {
     public ServerTest() {
     }
 
+    static String myName = "localplayer";
+
     @BeforeClass
     public static void setUpClass() {
-        Server.getInstance().newGame("localplayer");
+        Server.getInstance().newGame(myName);
     }
 
     @AfterClass
@@ -66,29 +68,29 @@ public class ServerTest {
 
     @Test
     public void testSetShips() {
-        
+
         ArrayList<Position> ship1 = new ArrayList<>();
         ship1.add(new Position(10, 10));
         ship1.add(new Position(10, 11));
         ship1.add(new Position(10, 12));
-        
+
         ArrayList<Position> ship2 = new ArrayList<>();
         ship2.add(new Position(20, 21));
         ship2.add(new Position(20, 22));
-        
+
         System.out.println("setShips");
-        
+
         ArrayList<ArrayList<Position>> ships = new ArrayList<>();
         ships.add(ship1);
         ships.add(ship2);
-        
+
         Server instance = Server.getInstance();
         Gamestate expResult = null;
-        Gamestate result = instance.setShips("localplayer", ships);
-        
-        assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(0), 10);
-        assertEquals(result.getPlayer1().getShips().get(0).getPositions().get(1), 10);
-        
+        Gamestate result = instance.setShips(myName, ships);
+
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(0), 10);
+        assertEquals(result.getPlayer(myName).getShips().get(0).getPositions().get(1), 10);
+
         //fail("The test case is a prototype.");
     }
 
@@ -96,17 +98,17 @@ public class ServerTest {
     public void testShoot() {
         int x = 4;
         int y = 3;
-        Gamestate result = Server.getInstance().shoot("localplayer", x, y);
-        Field f = result.getPlayer1().getField()[4][3];
+        Gamestate result = Server.getInstance().shoot(myName, x, y);
+        Field f = result.getOponent(myName).getField()[4][3];
         //assertNotEquals(Field.WATER, f);
         assertThat(f, not(Field.WATER));
-        
+
     }
 
     @Test
     public void testGetField() {
-        Gamestate testGame = Server.getInstance().newBotGame("localplayer");
-        Field[][] fields = testGame.getPlayer1().getField();
+        Gamestate testGame = Server.getInstance().newBotGame(myName);
+        Field[][] fields = testGame.getPlayer(myName).getField();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 assertEquals(Field.WATER, fields[x][y]);
