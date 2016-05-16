@@ -7,6 +7,7 @@ public class Player {
     private String name;
 
     private ArrayList<Ship> ships;
+    //Shots my oponent fired at me
     private ArrayList<Shoot> shoots;
 
     public Player(String name) {

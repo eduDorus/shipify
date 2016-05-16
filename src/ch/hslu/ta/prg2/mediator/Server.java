@@ -46,7 +46,7 @@ public class Server implements ServerInterface {
 
     @Override
     public Gamestate shoot(String playername, int x, int y) {
-        state.getPlayer(playername).addShoot(x, y);
+        state.getOponent(playername).addShoot(x, y);
         return state;
     }
 }
