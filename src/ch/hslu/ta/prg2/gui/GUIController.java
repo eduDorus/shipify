@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 /**
  *
  */
-public class SuperController {
+public class GUIController {
 
     static MainFrame mainframe;
     static StartPanel startpanel;
@@ -15,7 +15,7 @@ public class SuperController {
     static SaveGamePanel savegamepanel;
     private static String playername;
 
-    public SuperController() {
+    public GUIController() {
         createMainFrame();
         createStartPanel();
     }

@@ -6,7 +6,7 @@
 package ch.hslu.ta.prg2;
 
 import ch.hslu.ta.prg2.gui.StartPanelController;
-import ch.hslu.ta.prg2.gui.SuperController;
+import ch.hslu.ta.prg2.gui.GUIController;
 
 /**
  *
@@ -22,7 +22,7 @@ public class Shipify {
 
         //GUI SUPER CONTROLLER
         //=================
-        SuperController superController = new SuperController();
+        GUIController superController = new GUIController();
 
         
         
