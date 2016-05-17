@@ -2,6 +2,7 @@ package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
 import java.awt.Color;
+import javax.swing.Icon;
 import javax.swing.JButton;
 
 public class FieldButton extends JButton {
@@ -9,8 +10,8 @@ public class FieldButton extends JButton {
     
     private int x;
     private int y;
-    public FieldButton(int x, int y, Field fieldState) {
-        super();
+    public FieldButton(int x, int y, Field fieldState, Icon icon) {
+        super(icon);
         this.x = x;
         this.y = y;
         //this.setVisible(true);

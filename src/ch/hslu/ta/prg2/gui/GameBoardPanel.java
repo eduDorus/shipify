@@ -49,7 +49,7 @@ public class GameBoardPanel extends JPanel {
 
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
-                FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
+                FieldButton btn_playerField = new FieldButton(x, y, Field.WATER, null);
                 btn_playerField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -57,7 +57,7 @@ public class GameBoardPanel extends JPanel {
                     }
                 });
 
-                FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER);
+                FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER, null);
                 btn_opponentField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
