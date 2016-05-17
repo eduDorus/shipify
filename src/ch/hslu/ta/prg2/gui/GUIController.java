@@ -27,8 +27,7 @@ public class GUIController {
 
     private static void addPanel(JPanel panel) {
         mainframe.add(panel);
-//        mainframe.setVisible(true);
-        mainframe.repaint();
+        repaintFrame();
     }
 
     private void createStartPanel() {
@@ -83,4 +82,10 @@ public class GUIController {
         addPanel(gameboardpanel);
         Server.getInstance().newGame(playername);
     }
+    
+    public static void repaintFrame(){
+        mainframe.setVisible(true);
+        mainframe.repaint();
+    }
+    
 }

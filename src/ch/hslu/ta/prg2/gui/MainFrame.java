@@ -22,7 +22,6 @@ public class MainFrame extends JFrame {
     private void setOptions() {
 
         this.setBounds(100, 100, WINDOW_LENGTH, WINDOW_HEIGHT);
-        this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

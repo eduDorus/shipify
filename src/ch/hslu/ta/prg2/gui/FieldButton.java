@@ -17,11 +17,11 @@ public class FieldButton extends JButton {
         this.setBackground(Color.WHITE);
     }
 
-    public int getX() {
+    public int getXCords() {
         return x;
     }
 
-    public int getY() {
+    public int getYCords() {
         return y;
     }    
 }
