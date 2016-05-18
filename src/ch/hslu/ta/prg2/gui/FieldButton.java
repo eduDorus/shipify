@@ -10,10 +10,13 @@ public class FieldButton extends JButton {
     
     private int x;
     private int y;
+    private Field fieldstate;
+    
     public FieldButton(int x, int y, Field fieldState, Icon icon) {
         super(icon);
         this.x = x;
         this.y = y;
+        this.fieldstate = fieldState;
         //this.setVisible(true);
         this.setBackground(Color.WHITE);
     }
@@ -25,4 +28,14 @@ public class FieldButton extends JButton {
     public int getYCords() {
         return y;
     }    
+
+    public Field getFieldstate() {
+        return fieldstate;
+    }
+
+    public void setFieldstate(Field fieldstate) {
+        this.fieldstate = fieldstate;
+    }
+    
+    
 }
