@@ -18,10 +18,9 @@ public class GameBoardPanel extends JPanel {
 
     public GameBoardPanel() {
 
-        this.setSize(1227, 800);
-
         this.setLayout(new BorderLayout());
 
+        this.setSize(1200, 800);
         createComponents();
 
         setOptions();
@@ -46,11 +45,11 @@ public class GameBoardPanel extends JPanel {
         playerField.setPreferredSize(new Dimension(600, 600));
         playerField.setMinimumSize(new Dimension(600, 600));
         playerField.setLayout(new GridLayout(10, 10));
-        
+
         opponentField.setPreferredSize(new Dimension(600, 600));
         opponentField.setMinimumSize(new Dimension(600, 600));
         opponentField.setLayout(new GridLayout(10, 10));
-        
+
         infoField.setPreferredSize(new Dimension(1200, 200));
         infoField.setMinimumSize(new Dimension(1200, 200));
         infoField.setSize(1200, 200);
