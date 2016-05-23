@@ -52,6 +52,7 @@ public class GUIController {
 //        if (startpanel.islblEmpty()) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
+            playername = startpanel.lbl_declareName.getText();
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
