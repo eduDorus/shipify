@@ -18,7 +18,7 @@ public class LanGamePanel extends JPanel {
     JList list_savedGamesList;
 
     public LanGamePanel() {
-        this.setSize(1227, 800);
+        this.setSize(1200, 800);
 
         createComponents();
 

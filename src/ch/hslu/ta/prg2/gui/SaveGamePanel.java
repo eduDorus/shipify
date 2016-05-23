@@ -19,7 +19,7 @@ public class SaveGamePanel extends JPanel {
     JList list_savedGamesList;
 
     public SaveGamePanel() {
-        this.setSize(1227, 800);
+        this.setSize(1200, 800);
 
         createComponents();
 

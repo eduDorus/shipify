@@ -17,7 +17,7 @@ public class GameBoardPanel extends JPanel {
 
     public GameBoardPanel() {
 
-        this.setSize(1227, 800);
+        this.setSize(1200, 800);
         this.setLayout(new GridLayout(1, 2));
 
         createComponents();
