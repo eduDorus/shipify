@@ -9,8 +9,7 @@ public class MainFrame extends JFrame {
 
     //Constants
     private static final int WINDOW_HEIGHT = 800;
-    private static final int WINDOW_LENGTH = 1200;
-
+    private static final int WINDOW_LENGTH = 1200 + 27;
     public MainFrame() {
 
         //CREATE STARTPANEL

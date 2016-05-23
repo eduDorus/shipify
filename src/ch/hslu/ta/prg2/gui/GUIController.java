@@ -55,7 +55,7 @@ public class GUIController {
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
-//            Server.getInstance().newBotGame(playername);
+            Server.getInstance().newBotGame(playername);
         }
     }
 

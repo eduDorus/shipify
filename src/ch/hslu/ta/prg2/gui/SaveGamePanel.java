@@ -20,7 +20,7 @@ public class SaveGamePanel extends JPanel {
     JList list_savedGamesList;
 
     public SaveGamePanel() {
-        this.setSize(1200, 800);
+        this.setSize(1227, 800);
 
         createComponents();
 
@@ -50,6 +50,8 @@ public class SaveGamePanel extends JPanel {
         btn_selectGame.setFont(font1);
         btn_newGame.setFont(font1);
         btn_back.setFont(font1);
+        
+        
 
         list_savedGamesList.setBounds(75, 75, 1050, 450);
 

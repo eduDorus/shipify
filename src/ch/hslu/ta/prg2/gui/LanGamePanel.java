@@ -14,6 +14,7 @@ public class LanGamePanel extends JPanel {
     JButton btn_back;
     JButton btn_newGame;
     JButton btn_connectGame;
+    JButton btn_connectIPGame;
 
     JList list_savedGamesList;
 
@@ -33,6 +34,7 @@ public class LanGamePanel extends JPanel {
         btn_back = new JButton("Zurück");
         btn_connectGame = new JButton("Verbinden");
         btn_newGame = new JButton("Neues Spiel");
+        btn_connectIPGame = new JButton("Über IP Verbinden");
 
         list_savedGamesList = new JList();
     }
@@ -46,12 +48,15 @@ public class LanGamePanel extends JPanel {
         btn_back.setFont(font1);
         btn_connectGame.setFont(font1);
         btn_newGame.setFont(font1);
+        btn_connectIPGame.setFont(font1);
 
         list_savedGamesList.setBounds(75, 75, 1048, 450);
 
-        btn_back.setBounds(75, 600, 300, 50);
-        btn_connectGame.setBounds(450, 600, 300, 50);
-        btn_newGame.setBounds(825, 600, 300, 50);
+        btn_back.setBounds(75, 600, 206, 50);
+        btn_connectIPGame.setBounds(356, 600, 206, 50);
+        btn_connectGame.setBounds(631, 600, 206, 50);
+        btn_newGame.setBounds(911, 600, 206, 50);
+
         btn_back.addActionListener((ActionEvent e) -> {
             GUIController.backLanGamePanelActionListener();
         });
@@ -69,6 +74,7 @@ public class LanGamePanel extends JPanel {
         this.add(btn_back);
         this.add(btn_connectGame);
         this.add(btn_newGame);
+        this.add(btn_connectIPGame);
 
     }
 }

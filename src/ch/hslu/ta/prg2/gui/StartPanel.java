@@ -23,7 +23,7 @@ public class StartPanel extends JPanel {
 
     public StartPanel() {
 
-        this.setSize(1200, 800);
+        this.setSize(1227, 800);
 
         createComponents();
 
@@ -57,6 +57,8 @@ public class StartPanel extends JPanel {
         Font font1 = new Font("SansSerif", 1, 20);
 
         lbl_declareName.setFont(font1);
+        
+        txt_nameField.setFont(font1);
 
         lbl_declareName.setBounds(100, 150, 300, 50);
         txt_nameField.setBounds(100, 250, 300, 50);
