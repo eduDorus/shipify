@@ -68,9 +68,9 @@ public class SaveGamePanel extends JPanel {
 //        btn_selectGame.addActionListener((ActionEvent e) -> {
 //            SuperController.startButtonActionListener();
 //        });
-//        btn_newGame.addActionListener((ActionEvent e) -> {
-//            SuperController.startButtonActionListener();
-//        });
+        btn_newGame.addActionListener((ActionEvent e) -> {
+            GUIController.newGameButtonActionListener();
+        });
     }
 
     private void addObjects() {

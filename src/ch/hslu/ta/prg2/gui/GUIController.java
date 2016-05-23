@@ -56,7 +56,6 @@ public class GUIController {
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
-            Server.getInstance().newBotGame(playername);
         }
     }
 
@@ -65,6 +64,7 @@ public class GUIController {
 //        if (startpanel.islblEmpty()) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
+            playername = startpanel.lbl_declareName.getText();
             createLanGamePanel();
             mainframe.remove(startpanel);
             addPanel(langamepanel);
@@ -82,20 +82,21 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-//        createGameBoardPanel();
-//        mainframe.remove(langamepanel);
-//        addPanel(gameboardpanel);
-//        Server.getInstance().newGame(playername);
-//         
-//        TestGameBoard testgameboard = new TestGameBoard();
-//
-//        testgameboard.setVisible(true);
+        createGameBoardPanel();
+        Server.getInstance().newBotGame(playername);
+        mainframe.remove(startpanel);
+        addPanel(gameboardpanel);
+        
+         
+   /*     TestGameBoard testgameboard = new TestGameBoard();
 
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                testgameboard.setVisible(true);
-//            }
-//        });
+        testgameboard.setVisible(true);
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                testgameboard.setVisible(true);
+            }
+        });*/
     }
 
     public static void repaintFrame() {
