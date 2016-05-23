@@ -15,6 +15,7 @@ public class SaveGamePanel extends JPanel {
     JButton btn_delGame;
     JButton btn_newGame;
     JButton btn_selectGame;
+    JButton btn_back;
 
     JList list_savedGamesList;
 
@@ -34,6 +35,7 @@ public class SaveGamePanel extends JPanel {
         btn_delGame = new JButton("Spiel löschen");
         btn_selectGame = new JButton("Spiel starten");
         btn_newGame = new JButton("Neues Spiel");
+        btn_back = new JButton("Zurück");
 
         list_savedGamesList = new JList();
     }
@@ -47,12 +49,17 @@ public class SaveGamePanel extends JPanel {
         btn_delGame.setFont(font1);
         btn_selectGame.setFont(font1);
         btn_newGame.setFont(font1);
+        btn_back.setFont(font1);
 
         list_savedGamesList.setBounds(75, 75, 1048, 450);
 
-        btn_delGame.setBounds(75, 600, 300, 50);
-        btn_selectGame.setBounds(450, 600, 300, 50);
-        btn_newGame.setBounds(825, 600, 300, 50);
+        btn_delGame.setBounds(75, 600, 200, 50);
+        btn_selectGame.setBounds(450, 600, 200, 50);
+        btn_newGame.setBounds(825, 600, 200, 50);
+        btn_newGame.setBounds(825, 600, 200, 50);
+        btn_back.addActionListener((ActionEvent e) -> {
+            GUIController.backSaveGamePanelActionListener();
+        });
 //        btn_delGame.addActionListener((ActionEvent e) -> {
 //            SuperController.startButtonActionListener();
 //        });

@@ -73,8 +73,12 @@ public class GUIController {
         addPanel(startpanel);
     }
 
+    static void backSaveGamePanelActionListener() {
+        mainframe.remove(savegamepanel);
+        addPanel(startpanel);
+    }
+
     static void newGameButtonActionListener() {
-<<<<<<< HEAD
 //        createGameBoardPanel();
 //        mainframe.remove(langamepanel);
 //        addPanel(gameboardpanel);
@@ -89,12 +93,6 @@ public class GUIController {
 //                testgameboard.setVisible(true);
 //            }
 //        });
-=======
-       createGameBoardPanel();
-        mainframe.remove(langamepanel);
-        addPanel(gameboardpanel);
-        Server.getInstance().newGame(playername);
->>>>>>> origin/master
     }
 
     public static void repaintFrame() {
