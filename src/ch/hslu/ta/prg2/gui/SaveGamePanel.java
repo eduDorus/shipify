@@ -51,12 +51,12 @@ public class SaveGamePanel extends JPanel {
         btn_newGame.setFont(font1);
         btn_back.setFont(font1);
 
-        list_savedGamesList.setBounds(75, 75, 1048, 450);
+        list_savedGamesList.setBounds(75, 75, 1050, 450);
 
-        btn_delGame.setBounds(75, 600, 200, 50);
-        btn_selectGame.setBounds(450, 600, 200, 50);
-        btn_newGame.setBounds(825, 600, 200, 50);
-        btn_newGame.setBounds(825, 600, 200, 50);
+        btn_back.setBounds(75, 600, 206, 50);
+        btn_selectGame.setBounds(356, 600, 206, 50);
+        btn_delGame.setBounds(631, 600, 206, 50);
+        btn_newGame.setBounds(911, 600, 206, 50);
         btn_back.addActionListener((ActionEvent e) -> {
             GUIController.backSaveGamePanelActionListener();
         });
@@ -77,6 +77,7 @@ public class SaveGamePanel extends JPanel {
         this.add(btn_delGame);
         this.add(btn_selectGame);
         this.add(btn_newGame);
+        this.add(btn_back);
 
     }
 

@@ -48,18 +48,20 @@ public class GUIController {
     }
 
     public static void localButtonClicked() {
-        if (startpanel.islblEmpty()) {
+        if (false) {
+//        if (startpanel.islblEmpty()) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
-            Server.getInstance().newBotGame(playername);
+//            Server.getInstance().newBotGame(playername);
         }
     }
 
     public static void lanButtonClicked() {
-        if (startpanel.islblEmpty()) {
+        if (false) {
+//        if (startpanel.islblEmpty()) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
             createLanGamePanel();
