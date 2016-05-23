@@ -50,7 +50,6 @@ public class GUIController {
         } else {
 
             playername = startpanel.txt_nameField.getText();
-            System.out.println(playername);
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
@@ -81,7 +80,7 @@ public class GUIController {
     static void newGameButtonActionListener() {
         Server.getInstance().newBotGame(playername);
         createGameBoardPanel();
-        mainframe.remove(startpanel);
+        mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);
     }
 
