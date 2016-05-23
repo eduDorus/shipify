@@ -3,7 +3,6 @@ package ch.hslu.ta.prg2.gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -57,7 +56,7 @@ public class StartPanel extends JPanel {
         Font font1 = new Font("SansSerif", 1, 20);
 
         lbl_declareName.setFont(font1);
-        
+
         txt_nameField.setFont(font1);
 
         lbl_declareName.setBounds(100, 150, 300, 50);
@@ -91,11 +90,4 @@ public class StartPanel extends JPanel {
         this.add(lbl_imgtitle);
 
     }
-    
-    public boolean islblEmpty(){
-        return txt_nameField.getText().isEmpty();
-        
-    }
-    
-
 }

@@ -87,6 +87,7 @@ public class GameBoardPanel extends JPanel {
                 playerField.add(btn_playerField);
 
                 opponentField.add(btn_opponentField);
+                
             }
         }
     }

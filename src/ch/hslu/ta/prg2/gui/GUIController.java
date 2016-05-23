@@ -4,9 +4,6 @@ import ch.hslu.ta.prg2.mediator.Server;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- */
 public class GUIController {
 
     static MainFrame mainframe;
@@ -48,11 +45,12 @@ public class GUIController {
     }
 
     public static void localButtonClicked() {
-        if (false) {
-//        if (startpanel.islblEmpty()) {
+        if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
-            playername = startpanel.lbl_declareName.getText();
+
+            playername = startpanel.txt_nameField.getText();
+            System.out.println(playername);
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
@@ -60,11 +58,10 @@ public class GUIController {
     }
 
     public static void lanButtonClicked() {
-        if (false) {
-//        if (startpanel.islblEmpty()) {
+        if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
-            playername = startpanel.lbl_declareName.getText();
+            playername = startpanel.txt_nameField.getText();
             createLanGamePanel();
             mainframe.remove(startpanel);
             addPanel(langamepanel);
@@ -82,26 +79,14 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-        createGameBoardPanel();
         Server.getInstance().newBotGame(playername);
+        createGameBoardPanel();
         mainframe.remove(startpanel);
         addPanel(gameboardpanel);
-        
-         
-   /*     TestGameBoard testgameboard = new TestGameBoard();
-
-        testgameboard.setVisible(true);
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                testgameboard.setVisible(true);
-            }
-        });*/
     }
 
     public static void repaintFrame() {
         mainframe.setVisible(true);
         mainframe.repaint();
     }
-
 }
