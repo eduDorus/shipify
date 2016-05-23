@@ -102,15 +102,15 @@ public class TestGameBoard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(100, 100, 1200, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 800));
         setResizable(false);
-        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         playerPanel.setBackground(new java.awt.Color(102, 204, 0));
         playerPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         playerBattleField.setLayout(new java.awt.GridLayout(10, 10));
-        playerPanel.add(playerBattleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 350));
+        playerPanel.add(playerBattleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 610));
 
         btn_5fieldShip.setText("set 5 Field Ship");
 
@@ -137,11 +137,11 @@ public class TestGameBoard extends javax.swing.JFrame {
                 .addGroup(playerInfoBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_5fieldShip)
                     .addComponent(btn_1fieldShip))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(444, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, playerInfoBoardLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_resetBattleField)
-                .addGap(65, 65, 65))
+                .addGap(29, 29, 29))
         );
         playerInfoBoardLayout.setVerticalGroup(
             playerInfoBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,12 +150,12 @@ public class TestGameBoard extends javax.swing.JFrame {
                 .addComponent(btn_5fieldShip)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_1fieldShip)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(btn_resetBattleField)
-                .addGap(20, 20, 20))
+                .addGap(31, 31, 31))
         );
 
-        playerPanel.add(playerInfoBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 410, 150));
+        playerPanel.add(playerInfoBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 590, 190));
 
         getContentPane().add(playerPanel);
 
@@ -163,20 +163,20 @@ public class TestGameBoard extends javax.swing.JFrame {
         opponentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         opponentBattleField.setLayout(new java.awt.GridLayout(10, 10));
-        opponentPanel.add(opponentBattleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 400, 350));
+        opponentPanel.add(opponentBattleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 590, 610));
 
         javax.swing.GroupLayout opponentInfoBoardLayout = new javax.swing.GroupLayout(opponentInfoBoard);
         opponentInfoBoard.setLayout(opponentInfoBoardLayout);
         opponentInfoBoardLayout.setHorizontalGroup(
             opponentInfoBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
         opponentInfoBoardLayout.setVerticalGroup(
             opponentInfoBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 190, Short.MAX_VALUE)
         );
 
-        opponentPanel.add(opponentInfoBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 410, 150));
+        opponentPanel.add(opponentInfoBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 590, 190));
 
         getContentPane().add(opponentPanel);
 
