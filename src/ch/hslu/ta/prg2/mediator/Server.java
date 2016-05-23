@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Server implements ServerInterface {
 
     Gamestate state;
+    String playername;
 
     private Server() {
     }
@@ -23,21 +24,22 @@ public class Server implements ServerInterface {
 
     @Override
     public Gamestate newGame(String playername) {
+        this.playername = playername;
         state = new Gamestate(playername);
         return state;
     }
 
     @Override
     public Gamestate newBotGame(String playername) {
-
-        this.state = new Gamestate("localplayer", true);
+        this.playername = playername;
+        this.state = new Gamestate(playername, true);
         return state;
     }
 
     @Override
     public Gamestate setShips(String playername, ArrayList<ArrayList<Position>> ships) {
-        
-        for(ArrayList<Position> positions : ships){
+
+        for (ArrayList<Position> positions : ships) {
             Ship s = new Ship(positions);
             this.state.getPlayer(playername).getShips().add(s);
         };
@@ -49,4 +51,10 @@ public class Server implements ServerInterface {
         state.getOponent(playername).addShoot(x, y);
         return state;
     }
+
+    @Override
+    public String getPlayername() {
+        return playername;
+    }
+
 }
