@@ -14,5 +14,5 @@ public interface ServerInterface {
 
     public Gamestate shoot(String playername, int x, int y);
 
-    public String getPlayername();
+    public Gamestate getGamestate();
 }

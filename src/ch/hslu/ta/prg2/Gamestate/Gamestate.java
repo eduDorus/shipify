@@ -46,4 +46,8 @@ public class Gamestate implements Serializable {
         
         return null;
     }
+    
+    public String getPlayername() {
+        return player1.getName();
+    }
 }

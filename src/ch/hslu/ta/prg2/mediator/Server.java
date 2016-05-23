@@ -53,8 +53,7 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public String getPlayername() {
-        return playername;
+    public Gamestate getGamestate() {
+        return state;
     }
-
 }

@@ -69,9 +69,8 @@ public class GameBoardPanel extends JPanel {
                 btn_playerField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("shoot");
-                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
-                        updateOponentField(gamestate);
+                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getGamestate().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
+                        updatePlayerField(gamestate);
                     }
                 });
 
@@ -80,21 +79,19 @@ public class GameBoardPanel extends JPanel {
                 btn_opponentField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
-                        updatePlayerField(gamestate);
+                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getGamestate().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
+                        updateOponentField(gamestate);
                     }
                 });
 
                 playerField.add(btn_playerField);
-
                 opponentField.add(btn_opponentField);
-
             }
         }
     }
 
     private void updatePlayerField(Gamestate gamestate) {
-        Field[][] field = gamestate.getPlayer(Server.getInstance().getPlayername()).getField();
+        Field[][] field = gamestate.getPlayer(Server.getInstance().getGamestate().getPlayername()).getField();
         fieldButtonsPlayer.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();
@@ -102,8 +99,8 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void updateOponentField(Gamestate gamestate) {
-        Field[][] field = gamestate.getOponent(Server.getInstance().getPlayername()).getField();
-        fieldButtonsPlayer.stream().forEach((_item) -> {
+        Field[][] field = gamestate.getOponent(Server.getInstance().getGamestate().getPlayername()).getField();
+        fieldButtonsOponent.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();
         });
