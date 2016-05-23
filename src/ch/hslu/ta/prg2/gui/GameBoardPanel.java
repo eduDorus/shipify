@@ -26,7 +26,7 @@ public class GameBoardPanel extends JPanel {
 
         this.setSize(1200, 800);
         createComponents();
-  
+
         this.fieldButtonsPlayer = new ArrayList<>();
         this.fieldButtonsOponent = new ArrayList<>();
 
@@ -69,6 +69,7 @@ public class GameBoardPanel extends JPanel {
                 btn_playerField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        System.out.println("shoot");
                         Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
                         updateOponentField(gamestate);
                     }
@@ -87,7 +88,7 @@ public class GameBoardPanel extends JPanel {
                 playerField.add(btn_playerField);
 
                 opponentField.add(btn_opponentField);
-                
+
             }
         }
     }
@@ -96,13 +97,15 @@ public class GameBoardPanel extends JPanel {
         Field[][] field = gamestate.getPlayer(Server.getInstance().getPlayername()).getField();
         fieldButtonsPlayer.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+            _item.updateIcon();
         });
     }
-    
+
     private void updateOponentField(Gamestate gamestate) {
         Field[][] field = gamestate.getOponent(Server.getInstance().getPlayername()).getField();
         fieldButtonsPlayer.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+            _item.updateIcon();
         });
     }
 

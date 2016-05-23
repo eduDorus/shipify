@@ -48,7 +48,6 @@ public class GUIController {
         if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
-
             playername = startpanel.txt_nameField.getText();
             createSaveGamePanel();
             mainframe.remove(startpanel);

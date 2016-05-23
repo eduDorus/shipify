@@ -8,27 +8,30 @@ import javax.swing.JButton;
 
 public class FieldButton extends JButton {
 
-    
     private int x;
     private int y;
     private Field fieldstate;
-    
+
     public FieldButton(int x, int y, Field fieldState) {
-        
+
         this.x = x;
         this.y = y;
         this.fieldstate = fieldState;
-       
+
         this.setBackground(Color.WHITE);
-        
+
         updateIcon();
     }
-    
-    private void updateIcon(){
-         if(this.fieldstate == Field.WATER){
+
+    public void updateIcon() {
+        if (this.fieldstate == Field.WATER) {
             this.setIcon(new ImageIcon(getClass().getResource("water.jpg")));
-              
-        }       
+
+        }
+        if (this.fieldstate == Field.HIT) {
+            this.setIcon(new ImageIcon(getClass().getResource("hit.png")));
+            System.out.println("Set new Icon");
+        }
     }
 
     public int getXCords() {
@@ -37,7 +40,7 @@ public class FieldButton extends JButton {
 
     public int getYCords() {
         return y;
-    }    
+    }
 
     public Field getFieldstate() {
         return fieldstate;
@@ -46,6 +49,5 @@ public class FieldButton extends JButton {
     public void setFieldstate(Field fieldstate) {
         this.fieldstate = fieldstate;
     }
-    
-    
+
 }
