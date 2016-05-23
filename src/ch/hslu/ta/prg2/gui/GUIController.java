@@ -46,8 +46,8 @@ public class GUIController {
     private static void createLanGamePanel() {
         langamepanel = new LanGamePanel();
     }
-
-    private static void createGameBoardPanel() {
+    
+    private static void createGameBoardPanel(){
         gameboardpanel = new GameBoardPanel();
     }
 
@@ -77,25 +77,15 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-//        createGameBoardPanel();
-//        mainframe.remove(langamepanel);
-//        addPanel(gameboardpanel);
-//        Server.getInstance().newGame(playername);
-//         
-        TestGameBoard testgameboard = new TestGameBoard();
-
-        testgameboard.setVisible(true);
-
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                testgameboard.setVisible(true);
-//            }
-//        });
+        createGameBoardPanel();
+        mainframe.remove(langamepanel);
+        addPanel(gameboardpanel);
+        Server.getInstance().newGame(playername);
     }
-
-    public static void repaintFrame() {
+    
+    public static void repaintFrame(){
         mainframe.setVisible(true);
         mainframe.repaint();
     }
-
+    
 }
