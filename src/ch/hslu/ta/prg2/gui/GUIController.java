@@ -1,6 +1,7 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.mediator.Server;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -10,7 +11,6 @@ public class GUIController {
 
     static MainFrame mainframe;
     static StartPanel startpanel;
-    static HomePanel homepanel;
     static SaveGamePanel savegamepanel;
     static LanGamePanel langamepanel;
     static GameBoardPanel gameboardpanel;
@@ -35,10 +35,6 @@ public class GUIController {
         addPanel(startpanel);
     }
 
-    private static void createHomePanel() {
-        homepanel = new HomePanel();
-    }
-
     private static void createSaveGamePanel() {
         savegamepanel = new SaveGamePanel();
     }
@@ -51,29 +47,30 @@ public class GUIController {
         gameboardpanel = new GameBoardPanel();
     }
 
-    public static void startButtonClicked() {
-        createHomePanel();
-        mainframe.remove(startpanel);
-        addPanel(homepanel);
-        playername = startpanel.txt_nameField.getText();
-    }
-
     public static void localButtonClicked() {
-        createSaveGamePanel();
-        mainframe.remove(homepanel);
-        addPanel(savegamepanel);
-        Server.getInstance().newBotGame(playername);
+        if (startpanel.islblEmpty()) {
+            JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
+        } else {
+            createSaveGamePanel();
+            mainframe.remove(startpanel);
+            addPanel(savegamepanel);
+            Server.getInstance().newBotGame(playername);
+        }
     }
 
     public static void lanButtonClicked() {
-        createLanGamePanel();
-        mainframe.remove(homepanel);
-        addPanel(langamepanel);
+        if (startpanel.islblEmpty()) {
+            JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
+        } else {
+            createLanGamePanel();
+            mainframe.remove(startpanel);
+            addPanel(langamepanel);
+        }
     }
 
     static void backLanGamePanelActionListener() {
         mainframe.remove(langamepanel);
-        addPanel(homepanel);
+        addPanel(startpanel);
     }
 
     static void newGameButtonActionListener() {
@@ -82,9 +79,9 @@ public class GUIController {
 //        addPanel(gameboardpanel);
 //        Server.getInstance().newGame(playername);
 //         
-        TestGameBoard testgameboard = new TestGameBoard();
-
-        testgameboard.setVisible(true);
+//        TestGameBoard testgameboard = new TestGameBoard();
+//
+//        testgameboard.setVisible(true);
 
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {

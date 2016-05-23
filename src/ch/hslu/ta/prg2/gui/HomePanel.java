@@ -54,7 +54,7 @@ public class HomePanel extends JPanel {
         });
     }
 
-    private void addObjects() {;
+    private void addObjects() {
         this.add(btn_LOCAL);
         this.add(btn_LAN);
 
