@@ -1,13 +1,15 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
@@ -15,6 +17,8 @@ public class GameBoardPanel extends JPanel {
     private JPanel playerField;
     private JPanel opponentField;
     private JPanel infoField;
+    private ArrayList<FieldButton> fieldButtonsPlayer;
+    private ArrayList<FieldButton> fieldButtonsOponent;
 
     public GameBoardPanel() {
 
@@ -22,6 +26,9 @@ public class GameBoardPanel extends JPanel {
 
         this.setSize(1200, 800);
         createComponents();
+  
+        this.fieldButtonsPlayer = new ArrayList<>();
+        this.fieldButtonsOponent = new ArrayList<>();
 
         setOptions();
 
@@ -31,7 +38,6 @@ public class GameBoardPanel extends JPanel {
 
     }
 
-    //CREATE OBJECTS
     private void createComponents() {
 
         playerField = new JPanel();
@@ -39,7 +45,6 @@ public class GameBoardPanel extends JPanel {
         infoField = new JPanel();
 
     }
-//       
 
     private void setOptions() {
         playerField.setPreferredSize(new Dimension(600, 600));
@@ -60,18 +65,22 @@ public class GameBoardPanel extends JPanel {
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
+                fieldButtonsPlayer.add(btn_playerField);
                 btn_playerField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println(btn_playerField.getXCords() + ", " + btn_playerField.getYCords());
+                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
+                        updateOponentField(gamestate);
                     }
                 });
 
                 FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER);
+                fieldButtonsOponent.add(btn_opponentField);
                 btn_opponentField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println(btn_opponentField.getXCords() + ", " + btn_opponentField.getYCords());
+                        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayername(), btn_playerField.getXCords(), btn_playerField.getYCords());
+                        updatePlayerField(gamestate);
                     }
                 });
 
@@ -80,6 +89,20 @@ public class GameBoardPanel extends JPanel {
                 opponentField.add(btn_opponentField);
             }
         }
+    }
+
+    private void updatePlayerField(Gamestate gamestate) {
+        Field[][] field = gamestate.getPlayer(Server.getInstance().getPlayername()).getField();
+        fieldButtonsPlayer.stream().forEach((_item) -> {
+            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+        });
+    }
+    
+    private void updateOponentField(Gamestate gamestate) {
+        Field[][] field = gamestate.getOponent(Server.getInstance().getPlayername()).getField();
+        fieldButtonsPlayer.stream().forEach((_item) -> {
+            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+        });
     }
 
     private void addObjects() {
