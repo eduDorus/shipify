@@ -5,14 +5,11 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-
     private ArrayList<Ship> ships;
-    //Shots my oponent fired at me
     private ArrayList<Shoot> shoots;
 
     public Player(String name) {
         this.name = name;
-
         this.ships = new ArrayList<>();
         this.shoots = new ArrayList<>();
 
@@ -21,8 +18,6 @@ public class Player {
     public String getName() {
         return name;
     }
-    
-    
 
     public ArrayList<Ship> getShips() {
         return ships;
@@ -43,7 +38,7 @@ public class Player {
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 if (hasShot(x, y)) {
-                     if (hasShip(x, y)) {
+                    if (hasShip(x, y)) {
                         //Add ships is dead
                         fields[x][y] = Field.SHIPHIT;
                     } else {
@@ -52,7 +47,6 @@ public class Player {
                 } else {
                     fields[x][y] = Field.WATER;
                 }
-
             }
         }
         return fields;

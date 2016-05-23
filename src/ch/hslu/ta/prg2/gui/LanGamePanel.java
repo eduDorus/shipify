@@ -6,9 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-/**
- *
- */
 public class LanGamePanel extends JPanel {
 
     JButton btn_back;
@@ -28,7 +25,6 @@ public class LanGamePanel extends JPanel {
 
     }
 
-    //CREATE OBJECTS
     private void createComponents() {
 
         btn_back = new JButton("Zurück");
@@ -38,8 +34,7 @@ public class LanGamePanel extends JPanel {
 
         list_savedGamesList = new JList();
     }
-
-    //SET OPTIONS        
+       
     private void setOptions() {
         this.setLayout(null);
 

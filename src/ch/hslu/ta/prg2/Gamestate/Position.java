@@ -1,9 +1,8 @@
-
 package ch.hslu.ta.prg2.Gamestate;
 
 public class Position {
-    
-    public Position(int x, int y){
+
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -16,5 +15,5 @@ public class Position {
 
     public int getY() {
         return y;
-    }    
+    }
 }

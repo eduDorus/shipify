@@ -5,35 +5,24 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-/**
- *
- */
 public class HomePanel extends JPanel {
 
-    //COMPONENTS
     JButton btn_LOCAL;
     JButton btn_LAN;
 
     public HomePanel() {
-
         this.setSize(1200, 800);
 
         createComponents();
-
         addObjects();
         setOptions();
-
     }
 
-    //CREATE OBJECTS
     private void createComponents() {
-
         btn_LOCAL = new JButton("Neues Spiel gegen den PC");
         btn_LAN = new JButton("Neues Spiel über LAN");
-
     }
 
-    //SET OPTIONS        
     private void setOptions() {
         this.setLayout(null);
 
@@ -59,5 +48,4 @@ public class HomePanel extends JPanel {
         this.add(btn_LAN);
 
     }
-
 }

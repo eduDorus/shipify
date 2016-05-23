@@ -5,14 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-/**
- *
- */
 public class StartPanel extends JPanel {
 
-    //COMPONENTS
     JLabel lbl_declareName;
     JTextField txt_nameField;
     JButton btn_LOCAL;
@@ -25,13 +25,11 @@ public class StartPanel extends JPanel {
         this.setSize(1227, 800);
 
         createComponents();
-
         addObjects();
         setOptions();
 
     }
 
-    //CREATE OBJECTS
     private void createComponents() {
 
         lbl_declareName = new JLabel("Bitte gib deinen Namen an:");
@@ -49,7 +47,6 @@ public class StartPanel extends JPanel {
 
     }
 
-    //SET OPTIONS        
     private void setOptions() {
         this.setLayout(null);
 

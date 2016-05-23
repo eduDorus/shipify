@@ -19,9 +19,9 @@ class ReceiverHandler implements Runnable {
     public void run() {
         try {
             ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
-            
-            Gamestate game = ((Gamestate)ois.readObject());
-            
+
+            Gamestate game = ((Gamestate) ois.readObject());
+
             System.out.println(game.toString());
 
             ois.close();
@@ -31,5 +31,5 @@ class ReceiverHandler implements Runnable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SenderHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }  
+    }
 }

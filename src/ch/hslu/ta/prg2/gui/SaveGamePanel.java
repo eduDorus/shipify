@@ -6,41 +6,32 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-/**
- *
- * @author dias
- */
 public class SaveGamePanel extends JPanel {
 
     JButton btn_delGame;
     JButton btn_newGame;
     JButton btn_selectGame;
     JButton btn_back;
-
     JList list_savedGamesList;
 
     public SaveGamePanel() {
         this.setSize(1227, 800);
 
         createComponents();
-
         addObjects();
         setOptions();
 
     }
 
-    //CREATE OBJECTS
     private void createComponents() {
 
         btn_delGame = new JButton("Spiel löschen");
         btn_selectGame = new JButton("Spiel starten");
         btn_newGame = new JButton("Neues Spiel");
         btn_back = new JButton("Zurück");
-
         list_savedGamesList = new JList();
     }
 
-    //SET OPTIONS        
     private void setOptions() {
         this.setLayout(null);
 
@@ -50,8 +41,6 @@ public class SaveGamePanel extends JPanel {
         btn_selectGame.setFont(font1);
         btn_newGame.setFont(font1);
         btn_back.setFont(font1);
-        
-        
 
         list_savedGamesList.setBounds(75, 75, 1050, 450);
 
@@ -80,7 +69,5 @@ public class SaveGamePanel extends JPanel {
         this.add(btn_selectGame);
         this.add(btn_newGame);
         this.add(btn_back);
-
     }
-
 }

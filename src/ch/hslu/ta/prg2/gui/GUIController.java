@@ -95,11 +95,9 @@ public class GUIController {
     }
     
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
-        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getGamestate().getPlayer1().getName(), 
-                fieldButton.getXCords(), 
-                fieldButton.getYCords());
+        Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
         
-        Field[][] field = gamestate.getPlayer2().getField();
+        Field[][] field = gamestate.getOpponentPlayer().getField();
         opponentFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();

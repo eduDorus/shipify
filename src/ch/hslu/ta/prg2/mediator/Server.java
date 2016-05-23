@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Server implements ServerInterface {
 
-    Gamestate state;
-    String playername;
+    Gamestate gamestate;
+    String localPlayerName;
 
     private Server() {
     }
@@ -23,37 +23,37 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate newGame(String playername) {
-        this.playername = playername;
-        state = new Gamestate(playername);
-        return state;
+    public Gamestate newGame(String localPlayerName) {
+        this.localPlayerName = localPlayerName;
+        gamestate = new Gamestate(localPlayerName);
+        return gamestate;
     }
 
     @Override
-    public Gamestate newBotGame(String playername) {
-        this.playername = playername;
-        this.state = new Gamestate(playername, true);
-        return state;
+    public Gamestate newBotGame(String localPlayerName) {
+        this.localPlayerName = localPlayerName;
+        this.gamestate = new Gamestate(localPlayerName, true);
+        return gamestate;
     }
 
     @Override
-    public Gamestate setShips(String playername, ArrayList<ArrayList<Position>> ships) {
+    public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
 
         for (ArrayList<Position> positions : ships) {
             Ship s = new Ship(positions);
-            this.state.getPlayer(playername).getShips().add(s);
+            this.gamestate.getLocalPlayer().getShips().add(s);
         };
-        return state;
+        return gamestate;
     }
 
     @Override
-    public Gamestate shoot(String playername, int x, int y) {
-        state.getOponent(playername).addShoot(x, y);
-        return state;
+    public Gamestate shoot(int x, int y) {
+        gamestate.getOpponentPlayer().addShoot(x, y);
+        return gamestate;
     }
 
     @Override
     public Gamestate getGamestate() {
-        return state;
+        return gamestate;
     }
 }
