@@ -13,13 +13,10 @@ public class FieldButton extends JButton {
     private Field fieldstate;
 
     public FieldButton(int x, int y, Field fieldState) {
-
         this.x = x;
         this.y = y;
         this.fieldstate = fieldState;
-
         this.setBackground(Color.WHITE);
-
         updateIcon();
     }
 
