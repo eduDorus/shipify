@@ -47,7 +47,7 @@ public class TestGameBoard extends javax.swing.JFrame {
 
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
-                FieldButton btn = new FieldButton(x, y, Field.WATER, new ImageIcon(getClass().getResource("water.jpg")));
+                FieldButton btn = new FieldButton(x, y, Field.WATER);
                 this.buttons_PlayerBattleField.add(btn);
                 this.playerBattleField.add(btn);
             }
@@ -55,7 +55,7 @@ public class TestGameBoard extends javax.swing.JFrame {
 
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
-                FieldButton btn = new FieldButton(x, y, Field.WATER, new ImageIcon(getClass().getResource("water.jpg")));
+                FieldButton btn = new FieldButton(x, y, Field.WATER);
                 this.buttons_OpponentBattleField.add(btn);
                 this.opponentBattleField.add(btn);
             }

@@ -74,6 +74,7 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
+<<<<<<< HEAD
 //        createGameBoardPanel();
 //        mainframe.remove(langamepanel);
 //        addPanel(gameboardpanel);
@@ -88,6 +89,12 @@ public class GUIController {
 //                testgameboard.setVisible(true);
 //            }
 //        });
+=======
+       createGameBoardPanel();
+        mainframe.remove(langamepanel);
+        addPanel(gameboardpanel);
+        Server.getInstance().newGame(playername);
+>>>>>>> origin/master
     }
 
     public static void repaintFrame() {

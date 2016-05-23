@@ -4,6 +4,7 @@ import ch.hslu.ta.prg2.Gamestate.Field;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,18 +12,19 @@ import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
 
-    private JPanel playerfield;
+    private JPanel playerField;
     private JPanel opponentField;
-    private JPanel infofield;
+    private JPanel infoField;
 
     public GameBoardPanel() {
 
-        this.setSize(1200, 800);
-        this.setLayout(new GridLayout(1, 2));
+        this.setLayout(new BorderLayout());
 
+        this.setSize(1200, 800);
         createComponents();
 
         setOptions();
+
         createButtons();
 
         addObjects();
@@ -32,24 +34,32 @@ public class GameBoardPanel extends JPanel {
     //CREATE OBJECTS
     private void createComponents() {
 
-        playerfield = new JPanel();
+        playerField = new JPanel();
         opponentField = new JPanel();
-        infofield = new JPanel();
+        infoField = new JPanel();
 
     }
 //       
 
     private void setOptions() {
-        playerfield.setLayout(new GridLayout(10, 10));
+        playerField.setPreferredSize(new Dimension(600, 600));
+        playerField.setMinimumSize(new Dimension(600, 600));
+        playerField.setLayout(new GridLayout(10, 10));
+
+        opponentField.setPreferredSize(new Dimension(600, 600));
+        opponentField.setMinimumSize(new Dimension(600, 600));
         opponentField.setLayout(new GridLayout(10, 10));
 
+        infoField.setPreferredSize(new Dimension(1200, 200));
+        infoField.setMinimumSize(new Dimension(1200, 200));
+        infoField.setSize(1200, 200);
     }
 
     private void createButtons() {
 
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
-                FieldButton btn_playerField = new FieldButton(x, y, Field.WATER, null);
+                FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
                 btn_playerField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -57,7 +67,7 @@ public class GameBoardPanel extends JPanel {
                     }
                 });
 
-                FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER, null);
+                FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER);
                 btn_opponentField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -65,7 +75,7 @@ public class GameBoardPanel extends JPanel {
                     }
                 });
 
-                playerfield.add(btn_playerField);
+                playerField.add(btn_playerField);
 
                 opponentField.add(btn_opponentField);
             }
@@ -73,8 +83,9 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void addObjects() {
-        this.add(playerfield);
-        this.add(opponentField);
+        this.add(playerField, BorderLayout.EAST);
+        this.add(opponentField, BorderLayout.WEST);
+        this.add(infoField, BorderLayout.SOUTH);
 
     }
 
