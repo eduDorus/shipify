@@ -1,6 +1,9 @@
 package ch.hslu.ta.prg2.gui;
 
+import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.mediator.Server;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -86,5 +89,20 @@ public class GUIController {
     public static void repaintFrame() {
         mainframe.setVisible(true);
         mainframe.repaint();
+    }
+    
+    static void playerFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
+    }
+    
+    static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
+        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getGamestate().getPlayer1().getName(), 
+                fieldButton.getXCords(), 
+                fieldButton.getYCords());
+        
+        Field[][] field = gamestate.getPlayer2().getField();
+        opponentFields.stream().forEach((_item) -> {
+            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+            _item.updateIcon();
+        });
     }
 }
