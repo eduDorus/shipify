@@ -38,11 +38,9 @@ public class Server implements ServerInterface {
 
     @Override
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
-
-        for (ArrayList<Position> positions : ships) {
-            Ship s = new Ship(positions);
+        ships.stream().map((positions) -> new Ship(positions)).forEach((s) -> {
             this.gamestate.getLocalPlayer().getShips().add(s);
-        };
+        });
         return gamestate;
     }
 
