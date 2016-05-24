@@ -14,7 +14,6 @@ public class GUIController {
     static SaveGamePanel savegamepanel;
     static LanGamePanel langamepanel;
     static GameBoardPanel gameboardpanel;
-    private static String playername;
 
     public GUIController() {
         createMainFrame();
@@ -51,7 +50,7 @@ public class GUIController {
         if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
-            playername = startpanel.txt_nameField.getText();
+            Server.getInstance().setPlayerName(startpanel.txt_nameField.getText());
             createSaveGamePanel();
             mainframe.remove(startpanel);
             addPanel(savegamepanel);
@@ -62,7 +61,7 @@ public class GUIController {
         if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
-            playername = startpanel.txt_nameField.getText();
+            Server.getInstance().setPlayerName(startpanel.txt_nameField.getText());
             createLanGamePanel();
             mainframe.remove(startpanel);
             addPanel(langamepanel);
@@ -80,7 +79,7 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-        Server.getInstance().newBotGame(playername);
+        Server.getInstance().newBotGame(Server.getInstance().getPlayerName());
         createGameBoardPanel();
         mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);
@@ -97,7 +96,7 @@ public class GUIController {
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
         Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
 
-        Field[][] field = gamestate.getOpponent(playername).getField();
+        Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
         opponentFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();
@@ -108,7 +107,7 @@ public class GUIController {
     }
 
     static void newLanGameButtonActionListener() {
-        Server.getInstance().newGame(playername);
+        Server.getInstance().newGame(Server.getInstance().getPlayerName());
         createGameBoardPanel();
         mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);
