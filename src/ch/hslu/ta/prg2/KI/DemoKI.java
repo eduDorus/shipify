@@ -25,33 +25,32 @@ public class DemoKI {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Server.getInstance().newBotGame("Marco");
-        
+        //Ist einfach so
+        Server.getInstance().setPlayerName("Marco");
+        Server.getInstance().newBotGame();
+
         ArrayList<Position> ship1 = new ArrayList<>();
         ship1.add(new Position(8, 6));
         ship1.add(new Position(8, 7));
         ship1.add(new Position(8, 8));
-        
+
         ArrayList<Position> ship2 = new ArrayList<>();
         ship2.add(new Position(2, 2));
         ship2.add(new Position(3, 2));
-        
+
         ArrayList<ArrayList<Position>> ships = new ArrayList<>();
         ships.add(ship1);
         ships.add(ship2);
-        
+
         Gamestate currentState = Server.getInstance().setShips(ships);
-        
-        
-        for(int i = 0; i < 10; i++){
-        KI ki = new KI(currentState);
-        
-            System.out.println(ki.getX()+", "+ki.getY());
-            
+
+        for (int i = 0; i < 10; i++) {
+            KI ki = new KI(currentState);
+
+            System.out.println(ki.getX() + ", " + ki.getY());
+
         }
 
-        
-        
     }
 
 }
