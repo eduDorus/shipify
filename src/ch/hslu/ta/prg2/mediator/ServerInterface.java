@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public interface ServerInterface {
 
-    public Gamestate newGame(String localPlayerName);
+    public Gamestate newGame();
 
-    public Gamestate newBotGame(String localPlayerName);
+    public Gamestate newBotGame();
 
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships);
 

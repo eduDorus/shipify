@@ -79,7 +79,7 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-        Server.getInstance().newBotGame(Server.getInstance().getPlayerName());
+        Server.getInstance().newBotGame();
         createGameBoardPanel();
         mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);
@@ -90,24 +90,11 @@ public class GUIController {
         mainframe.repaint();
     }
 
-    static void playerFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
-    }
-
-    static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
-        Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
-
-        Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
-        opponentFields.stream().forEach((_item) -> {
-            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
-            _item.updateIcon();
-        });
-    }
-
     static void saveButtonActionListener() {
     }
 
     static void newLanGameButtonActionListener() {
-        Server.getInstance().newGame(Server.getInstance().getPlayerName());
+        Server.getInstance().newGame();
         createGameBoardPanel();
         mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);

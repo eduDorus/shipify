@@ -23,16 +23,14 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate newGame(String localPlayerName) {
-        this.playerName = localPlayerName;
-        gamestate = new Gamestate(localPlayerName);
+    public Gamestate newGame() {
+        gamestate = new Gamestate(this.playerName);
         return gamestate;
     }
 
     @Override
-    public Gamestate newBotGame(String localPlayerName) {
-        this.playerName = localPlayerName;
-        this.gamestate = new Gamestate(localPlayerName, true);
+    public Gamestate newBotGame() {
+        this.gamestate = new Gamestate(this.playerName, true);
         return gamestate;
     }
 
