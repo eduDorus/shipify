@@ -12,8 +12,8 @@ import java.util.Random;
 public class KI {
 
     private Gamestate state;
-    private int x;
-    private int y;
+    private static int x;
+    private static int y;
     private Field[][] field = Server.getInstance().getGamestate().getOpponent(Server.getInstance().getGamestate().getPlayer("bot").getName()).getField();
 
     public KI(Gamestate state) {
