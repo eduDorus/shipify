@@ -1,5 +1,6 @@
 package ch.hslu.ta.prg2.Gamestate;
 
+import ch.hslu.ta.prg2.mediator.Server;
 import java.io.Serializable;
 
 public class Gamestate implements Serializable {
@@ -10,6 +11,7 @@ public class Gamestate implements Serializable {
     public Gamestate(String name) {
         if (name.equals("bot")) {
             name = name + "_player";
+            Server.getInstance().setPlayerName(name);
         }
         player1 = new Player(name);
 
