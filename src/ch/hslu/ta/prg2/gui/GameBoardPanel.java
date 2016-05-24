@@ -71,7 +71,7 @@ public class GameBoardPanel extends JPanel {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        GUIController.playerFieldActionListener(btn_playerField, fieldButtonsPlayer);
+                        GameBoardController.addShipActionListener(btn_playerField, fieldButtonsPlayer);
                     }
                 });
 
@@ -81,7 +81,7 @@ public class GameBoardPanel extends JPanel {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        GUIController.opponentFieldActionListener(btn_opponentField, fieldButtonsOpponent);
+                        GameBoardController.opponentFieldActionListener(btn_opponentField, fieldButtonsOpponent);
                     }
                 });
 
