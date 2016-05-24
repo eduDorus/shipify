@@ -44,6 +44,8 @@ public class Player {
                     } else {
                         fields[x][y] = Field.HIT;
                     }
+                } else if (hasShip(x, y)) {
+                    fields[x][y] = Field.SHIP;
                 } else {
                     fields[x][y] = Field.WATER;
                 }

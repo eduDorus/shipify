@@ -1,11 +1,16 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Position;
+import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -102,7 +107,30 @@ public class GameBoardPanel extends JPanel {
                 FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
                 fieldButtonsPlayer.add(btn_playerField);
                 btn_playerField.addActionListener((ActionEvent e) -> {
-                    GameBoardController.addShipActionListener(btn_playerField, fieldButtonsPlayer);
+                    //GameBoardController.addShipActionListener(btn_playerField, fieldButtonsPlayer);
+                    ArrayList<ArrayList<Position>> ships = new ArrayList<>();
+                    ArrayList<Position> currentShip = new ArrayList<>();
+                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()));
+                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()+1));
+                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()-1));
+                    ships.add(currentShip);
+                    
+                    Field[][] field = Server.getInstance().setShips(ships).getPlayer(Server.getInstance().getPlayerName()).getField();
+                    fieldButtonsPlayer.stream().forEach((_item) -> {
+                        _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+                        _item.updateIcon();
+                    });
+                });
+                btn_playerField.addMouseListener(new MouseAdapter() {
+                    
+                    @Override
+                    public void mouseEntered(MouseEvent me) {
+                        btn_playerField.setBackground(Color.green);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent me) {
+                        btn_playerField.updateIcon();
+                    }
                 });
 
                 FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER);
@@ -127,5 +155,5 @@ public class GameBoardPanel extends JPanel {
         this.add(btn_shipThree);
         this.add(btn_shipFour);
         this.add(btn_start);
-    }
+    }   
 }

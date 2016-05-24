@@ -3,23 +3,18 @@ package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
-import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.util.ArrayList;
 
 public class GameBoardController {
     
-    ArrayList<ArrayList<Position>> ships = new ArrayList<>(); // Placeholder for temp ships
- //static void hoverFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields)
-    
-    static void addShipActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
-        Gamestate gamestate = Server.getInstance().setShips(null);
+    int shipOneAmount = 4;
+    int shipTwoAmount = 3;
+    int shipThreeAmount = 2;
+    int shipFourAmount = 1;
         
-        Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
-        playerFields.stream().forEach((_item) -> {
-            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
-            _item.updateIcon();
-        });
+    static void addShipActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
+        
     }
     
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {

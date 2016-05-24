@@ -21,12 +21,15 @@ public class FieldButton extends JButton {
 
     public void updateIcon() {
         if (this.fieldstate == Field.WATER) {
-            this.setIcon(new ImageIcon(getClass().getResource("water.jpg")));
-
+            //this.setIcon(new ImageIcon(getClass().getResource("water.jpg")));
+            this.setBackground(Color.blue);
         }
         if (this.fieldstate == Field.HIT) {
-            this.setIcon(new ImageIcon(getClass().getResource("hit.png")));
-            System.out.println("Set new Icon");
+            //this.setIcon(new ImageIcon(getClass().getResource("hit.png")));
+            this.setBackground(Color.red);
+        }
+        if (this.fieldstate == Field.SHIP) {
+            this.setBackground(Color.DARK_GRAY);
         }
     }
 
