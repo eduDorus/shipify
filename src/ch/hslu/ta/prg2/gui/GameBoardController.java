@@ -12,7 +12,7 @@ public class GameBoardController {
     static void addShipActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
         Gamestate gamestate = Server.getInstance().setShips(null);
         
-        Field[][] field = gamestate.getOpponentPlayer().getField();
+        Field[][] field = gamestate.getOpponent("Here the localname").getField();
         playerFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();
@@ -22,7 +22,7 @@ public class GameBoardController {
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
         Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
         
-        Field[][] field = gamestate.getOpponentPlayer().getField();
+        Field[][] field = gamestate.getOpponent("Here the localname").getField();
         opponentFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();

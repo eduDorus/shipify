@@ -39,14 +39,14 @@ public class Server implements ServerInterface {
     @Override
     public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
         ships.stream().map((positions) -> new Ship(positions)).forEach((s) -> {
-            this.gamestate.getLocalPlayer().getShips().add(s);
+            this.gamestate.getPlayer(localPlayerName).getShips().add(s);
         });
         return gamestate;
     }
 
     @Override
     public Gamestate shoot(int x, int y) {
-        gamestate.getOpponentPlayer().addShoot(x, y);
+        gamestate.getOpponent(localPlayerName).addShoot(x, y);
         return gamestate;
     }
 

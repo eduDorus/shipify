@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class Gamestate implements Serializable {
 
-    private Player localPlayer;
-    private Player opponentPlayer;
+    private Player player1;
+    private Player player2;
 
     public Gamestate(String name) {
         if (name.equals("bot")) {
             name = name + "_player";
         }
-        localPlayer = new Player(name);
+        player1 = new Player(name);
 
     }
 
@@ -20,15 +20,27 @@ public class Gamestate implements Serializable {
         this(name);
 
         if (againstBot) {
-            opponentPlayer = new Player("bot");
+            player2 = new Player("bot");
         }
     }
-
-    public Player getLocalPlayer() {
-        return localPlayer;
+    
+    public Player getPlayer(String name) {
+        if (this.player1.getName().equals(name)) {
+            return player1;
+        } else if (this.player2.getName().equals(name)) {
+            return player2;
+        }
+        return null;
     }
 
-    public Player getOpponentPlayer() {
-        return opponentPlayer;
+    public Player getOpponent(String name) {
+        Player whoAmI = this.getPlayer(name);
+        if (whoAmI.equals(player1)) {
+            return this.player2;
+        } else if (whoAmI.equals(player2)) {
+            return this.player1;
+        }
+
+        return null;
     }
 }
