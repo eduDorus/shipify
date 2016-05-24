@@ -90,17 +90,27 @@ public class GUIController {
         mainframe.setVisible(true);
         mainframe.repaint();
     }
-    
+
     static void playerFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
     }
-    
+
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
         Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
-        
+
         Field[][] field = gamestate.getOpponentPlayer().getField();
         opponentFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
             _item.updateIcon();
         });
+    }
+
+    static void saveButtonActionListener() {
+    }
+
+    static void newLanGameButtonActionListener() {
+        Server.getInstance().newGame(playername);
+        createGameBoardPanel();
+        mainframe.remove(savegamepanel);
+        addPanel(gameboardpanel);
     }
 }

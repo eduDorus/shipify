@@ -59,7 +59,7 @@ public class LanGamePanel extends JPanel {
 //            SuperController.startButtonActionListener();
 //        });
         btn_newGame.addActionListener((ActionEvent e) -> {
-            GUIController.newGameButtonActionListener();
+            GUIController.newLanGameButtonActionListener();
         });
     }
 

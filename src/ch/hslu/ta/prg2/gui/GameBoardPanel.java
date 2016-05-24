@@ -3,10 +3,12 @@ package ch.hslu.ta.prg2.gui;
 import ch.hslu.ta.prg2.Gamestate.Field;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
@@ -14,6 +16,7 @@ public class GameBoardPanel extends JPanel {
     private JPanel playerField;
     private JPanel opponentField;
     private JPanel infoField;
+    private JButton btn_save;
     private ArrayList<FieldButton> fieldButtonsPlayer;
     private ArrayList<FieldButton> fieldButtonsOpponent;
 
@@ -34,9 +37,14 @@ public class GameBoardPanel extends JPanel {
         playerField = new JPanel();
         opponentField = new JPanel();
         infoField = new JPanel();
+        btn_save = new JButton("Spiel Speichern");
     }
 
     private void setOptions() {
+        
+        Font font1 = new Font("SansSerif", 1, 20);
+        btn_save.setFont(font1);
+        
         playerField.setPreferredSize(new Dimension(600, 600));
         playerField.setMinimumSize(new Dimension(600, 600));
         playerField.setLayout(new GridLayout(10, 10));
@@ -48,6 +56,10 @@ public class GameBoardPanel extends JPanel {
         infoField.setPreferredSize(new Dimension(1200, 200));
         infoField.setMinimumSize(new Dimension(1200, 200));
         infoField.setSize(1200, 200);
+        
+        btn_save.addActionListener((ActionEvent e) -> {
+            GUIController.saveButtonActionListener();
+        });
     }
 
     private void createButtons() {
@@ -83,5 +95,6 @@ public class GameBoardPanel extends JPanel {
         this.add(playerField, BorderLayout.WEST);
         this.add(opponentField, BorderLayout.EAST);
         this.add(infoField, BorderLayout.SOUTH);
+        this.add(btn_save);
     }
 }
