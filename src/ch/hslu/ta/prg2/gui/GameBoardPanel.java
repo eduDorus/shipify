@@ -9,8 +9,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,15 +22,17 @@ public class GameBoardPanel extends JPanel {
     private JPanel playerField;
     private JPanel opponentField;
     private JPanel infoField;
-    
+
     private JButton btn_shipOne;
     private JButton btn_shipTwo;
     private JButton btn_shipThree;
     private JButton btn_shipFour;
     private JButton btn_start;
-    
+
     private ArrayList<FieldButton> fieldButtonsPlayer;
     private ArrayList<FieldButton> fieldButtonsOpponent;
+
+    private int counter = 1;
 
     public GameBoardPanel() {
         this.setLayout(new BorderLayout());
@@ -55,19 +59,19 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void setOptions() {
-        
+
         Font font1 = new Font("SansSerif", 1, 20);
         btn_start.setFont(font1);
         btn_shipOne.setFont(font1);
         btn_shipTwo.setFont(font1);
         btn_shipThree.setFont(font1);
         btn_shipFour.setFont(font1);
-        
+
         btn_shipOne.setBounds(75, 600, 206, 50);
         btn_shipTwo.setBounds(356, 600, 206, 50);
         btn_shipThree.setBounds(631, 600, 206, 50);
         btn_shipFour.setBounds(911, 600, 206, 50);
-        
+
         playerField.setPreferredSize(new Dimension(600, 600));
         playerField.setMinimumSize(new Dimension(600, 600));
         playerField.setLayout(new GridLayout(10, 10));
@@ -79,23 +83,23 @@ public class GameBoardPanel extends JPanel {
         infoField.setPreferredSize(new Dimension(1200, 200));
         infoField.setMinimumSize(new Dimension(1200, 200));
         infoField.setSize(1200, 200);
-        
+
         btn_shipOne.addActionListener((ActionEvent e) -> {
             GameBoardController.shipOneButtonActionListener();
         });
-        
+
         btn_shipTwo.addActionListener((ActionEvent e) -> {
             GameBoardController.shipTwoButtonActionListener();
         });
-        
+
         btn_shipThree.addActionListener((ActionEvent e) -> {
             GameBoardController.shipThreeButtonActionListener();
         });
-        
+
         btn_shipFour.addActionListener((ActionEvent e) -> {
             GameBoardController.shipFourButtonActionListener();
         });
-        
+
         btn_start.addActionListener((ActionEvent e) -> {
             GameBoardController.startButtonActionListener();
         });
@@ -108,25 +112,15 @@ public class GameBoardPanel extends JPanel {
                 fieldButtonsPlayer.add(btn_playerField);
                 btn_playerField.addActionListener((ActionEvent e) -> {
                     //GameBoardController.addShipActionListener(btn_playerField, fieldButtonsPlayer);
-                    ArrayList<ArrayList<Position>> ships = new ArrayList<>();
-                    ArrayList<Position> currentShip = new ArrayList<>();
-                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()));
-                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()+1));
-                    currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords()-1));
-                    ships.add(currentShip);
-                    
-                    Field[][] field = Server.getInstance().setShips(ships).getPlayer(Server.getInstance().getPlayerName()).getField();
-                    fieldButtonsPlayer.stream().forEach((_item) -> {
-                        _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
-                        _item.updateIcon();
-                    });
+                    addShipToGameBoard(btn_playerField);
                 });
                 btn_playerField.addMouseListener(new MouseAdapter() {
-                    
+
                     @Override
                     public void mouseEntered(MouseEvent me) {
                         btn_playerField.setBackground(Color.green);
                     }
+
                     @Override
                     public void mouseExited(MouseEvent me) {
                         btn_playerField.updateIcon();
@@ -146,7 +140,7 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void addObjects() {
-        
+
         this.add(playerField, BorderLayout.WEST);
         this.add(opponentField, BorderLayout.EAST);
         this.add(infoField, BorderLayout.SOUTH);
@@ -155,5 +149,33 @@ public class GameBoardPanel extends JPanel {
         this.add(btn_shipThree);
         this.add(btn_shipFour);
         this.add(btn_start);
-    }   
+    }
+
+    private void addShipToGameBoard(FieldButton btn_playerField) {
+        ArrayList<ArrayList<Position>> ships = new ArrayList<>();
+        ArrayList<Position> currentShip = new ArrayList<>();
+
+        for (int i = 0; i < counter; i++) {
+            currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords() + i));
+        }
+
+        ships.add(currentShip);
+        Field[][] field = Server.getInstance().setShips(ships).getPlayer(Server.getInstance().getPlayerName()).getField();
+        fieldButtonsPlayer.stream().forEach((button) -> {
+            button.setFieldstate(field[button.getXCords()][button.getYCords()]);
+            button.updateIcon();
+        });
+
+        counter++;
+        if (counter > 4) {
+            fieldButtonsPlayer.stream().forEach((button) -> {
+                for (ActionListener act : button.getActionListeners()) {
+                    button.removeActionListener(act);
+                }
+                for (MouseListener ml : button.getMouseListeners()) {
+                    button.removeMouseListener(ml);
+                }
+            });
+        }
+    }
 }
