@@ -53,22 +53,10 @@ public class Player {
     }
 
     private boolean hasShip(int x, int y) {
-        for (Ship s : ships) {
-            for (Position p : s.getPositions()) {
-                if (p.getX() == x && p.getY() == y) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return ships.stream().anyMatch((s) -> (s.getPositions().stream().anyMatch((p) -> (p.getX() == x && p.getY() == y))));
     }
 
     private boolean hasShot(int x, int y) {
-        for (Shoot s : shoots) {
-            if (s.position().getX() == x && s.position().getY() == y) {
-                return true;
-            }
-        }
-        return false;
+        return shoots.stream().anyMatch((s) -> (s.position().getX() == x && s.position().getY() == y));
     }
 }
