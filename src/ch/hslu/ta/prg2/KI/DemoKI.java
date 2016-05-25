@@ -11,7 +11,10 @@ import ch.hslu.ta.prg2.mediator.Server;
 import ch.hslu.ta.prg2.mediator.*;
 import ch.hslu.ta.prg2.gui.*;
 import ch.hslu.ta.prg2.Gamestate.*;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,13 +47,15 @@ public class DemoKI {
 
         Gamestate currentState = Server.getInstance().setShips(ships);
 
+        
         for (int i = 0; i < 10; i++) {
             KI ki = new KI(currentState);
 
-            System.out.println(ki.getX() + ", " + ki.getY());
-
         }
-
+        
+        
+        
+        
+        
     }
-
 }
