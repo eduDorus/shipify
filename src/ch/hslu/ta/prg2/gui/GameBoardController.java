@@ -18,11 +18,11 @@ public class GameBoardController {
     }
     
     static void opponentFieldActionListener(FieldButton fieldButton, ArrayList<FieldButton> opponentFields) {
-        Gamestate gamestate = Server.getInstance().shoot(fieldButton.getXCords(), fieldButton.getYCords());
+        Gamestate gamestate = Server.getInstance().shoot(fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
         
         Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
         opponentFields.stream().forEach((_item) -> {
-            _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
+            _item.setFieldstate(field[_item.getPosition().getX()][_item.getPosition().getY()]);
         });
     }
     

@@ -1,6 +1,7 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.BorderLayout;
@@ -32,7 +33,7 @@ public class GameBoardPanel extends JPanel {
     private ArrayList<FieldButton> fieldButtonsPlayer;
     private ArrayList<FieldButton> fieldButtonsOpponent;
 
-    private int counter = 1;
+    private int currentShipSize = 1;
 
     public GameBoardPanel() {
         this.setLayout(new BorderLayout());
@@ -110,20 +111,21 @@ public class GameBoardPanel extends JPanel {
             for (int y = 0; y < 10; y++) {
                 FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
                 fieldButtonsPlayer.add(btn_playerField);
-                btn_playerField.addActionListener((ActionEvent e) -> {
+                /*btn_playerField.addActionListener((ActionEvent e) -> {
                     //GameBoardController.addShipActionListener(btn_playerField, fieldButtonsPlayer);
                     addShipToGameBoard(btn_playerField);
-                });
+                });*/
+
                 btn_playerField.addMouseListener(new MouseAdapter() {
 
                     @Override
                     public void mouseEntered(MouseEvent me) {
-                        btn_playerField.setTempFieldColor(Color.GREEN);
+                        displayShip(btn_playerField);
                     }
 
                     @Override
                     public void mouseExited(MouseEvent me) {
-                        btn_playerField.resetTempFieldColor();
+                        removeAllTempColorAndListener();
                     }
                 });
 
@@ -139,6 +141,13 @@ public class GameBoardPanel extends JPanel {
         }
     }
 
+    private void updateField(Gamestate state) {
+        Field[][] field = state.getPlayer(Server.getInstance().getPlayerName()).getField();
+        fieldButtonsPlayer.stream().forEach((button) -> {
+            button.setFieldstate(field[button.getPosition().getX()][button.getPosition().getY()]);
+        });
+    }
+
     private void addObjects() {
 
         this.add(playerField, BorderLayout.WEST);
@@ -151,30 +160,45 @@ public class GameBoardPanel extends JPanel {
         this.add(btn_start);
     }
 
-    private void addShipToGameBoard(FieldButton btn_playerField) {
-        ArrayList<ArrayList<Position>> ships = new ArrayList<>();
+    private void removeAllTempColorAndListener() {
+        fieldButtonsPlayer.stream().forEach((button) -> {
+            button.resetTempFieldColor();
+
+            for (ActionListener act : button.getActionListeners()) {
+                button.removeActionListener(act);
+            }
+        });
+    }
+
+    private void displayShip(FieldButton btn_playerField) {
+        System.out.println("ch.hslu.ta.prg2.gui.GameBoardPanel.displayShip()");
         ArrayList<Position> currentShip = new ArrayList<>();
 
-        for (int i = 0; i < counter; i++) {
-            currentShip.add(new Position(btn_playerField.getXCords(), btn_playerField.getYCords() + i));
+        for (int i = 0; i < currentShipSize; i++) {
+            currentShip.add(new Position(btn_playerField.getPosition().getX(), btn_playerField.getPosition().getY() + i));
         }
 
-        ships.add(currentShip);
-        Field[][] field = Server.getInstance().setShips(ships).getPlayer(Server.getInstance().getPlayerName()).getField();
-        fieldButtonsPlayer.stream().forEach((button) -> {
-            button.setFieldstate(field[button.getXCords()][button.getYCords()]);
-        });
-
-        counter++;
-        if (counter > 4) {
-            fieldButtonsPlayer.stream().forEach((button) -> {
-                for (ActionListener act : button.getActionListeners()) {
-                    button.removeActionListener(act);
-                }
-                for (MouseListener ml : button.getMouseListeners()) {
-                    button.removeMouseListener(ml);
+        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+            currentShip.stream().forEach((shipPosition) -> {
+                if (FieldButton.getPosition().equals(shipPosition)) {
+                    FieldButton.setTempFieldColor(Color.GREEN);
+                    FieldButton.addActionListener((ActionEvent e) -> {
+                        addShipToGameBoard(currentShip);
+                    });
                 }
             });
-        }
+        });
+    }
+
+    private void addShipToGameBoard(ArrayList<Position> ship) {
+        ArrayList<ArrayList<Position>> ships = new ArrayList<>();
+
+        ships.add(ship);
+
+        Gamestate state = Server.getInstance().setShips(ships);
+
+        updateField(state);
+
+        currentShipSize++;
     }
 }

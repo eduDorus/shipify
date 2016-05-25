@@ -1,6 +1,7 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Position;
 import java.awt.Color;
 import javax.swing.JButton;
 
@@ -30,14 +31,10 @@ public class FieldButton extends JButton {
         }
     }
 
-    public int getXCords() {
-        return x;
+    public Position getPosition(){
+        return new Position(x, y);
     }
-
-    public int getYCords() {
-        return y;
-    }
-
+    
     public Field getFieldstate() {
         return fieldstate;
     }

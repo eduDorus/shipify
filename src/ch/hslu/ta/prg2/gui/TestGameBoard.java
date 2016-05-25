@@ -238,28 +238,28 @@ public class TestGameBoard extends javax.swing.JFrame {
             FieldButton current = itr2.next();
             current.setBackground(Color.WHITE);
             current.setIcon(new ImageIcon(getClass().getResource("water.jpg")));
-            if (current.getXCords() == xPos && current.getYCords() == yPos) {
+            if (current.getPosition().getX() == xPos && current.getPosition().getY() == yPos) {
                 current.setIcon(new ImageIcon(getClass().getResource("ship-icon-59484.png")));
                 current.setFieldstate(Field.SHIP);
 
-                int xCord = current.getXCords();
-                int yCord = current.getYCords();
+                int xCord = current.getPosition().getX();
+                int yCord = current.getPosition().getY();
 
                 Iterator<FieldButton> innerItr = this.buttons_PlayerBattleField.iterator();
 
                 while (innerItr.hasNext()) {
                     FieldButton innerCurrent = innerItr.next();
 
-                    if (innerCurrent.getXCords() == (xCord + 1) && innerCurrent.getYCords() == yCord) {
+                    if (innerCurrent.getPosition().getX() == (xCord + 1) && innerCurrent.getPosition().getY() == yCord) {
                         innerCurrent.setFieldstate(Field.GAP);
                     }
-                    if (innerCurrent.getXCords() == (xCord - 1) && innerCurrent.getYCords() == yCord) {
+                    if (innerCurrent.getPosition().getX() == (xCord - 1) && innerCurrent.getPosition().getY() == yCord) {
                         innerCurrent.setFieldstate(Field.GAP);
                     }
-                    if (innerCurrent.getYCords() == (yCord + 1) && innerCurrent.getXCords() == xCord) {
+                    if (innerCurrent.getPosition().getY() == (yCord + 1) && innerCurrent.getPosition().getX() == xCord) {
                         innerCurrent.setFieldstate(Field.GAP);
                     }
-                    if (innerCurrent.getYCords() == (yCord - 1) && innerCurrent.getXCords() == xCord) {
+                    if (innerCurrent.getPosition().getY() == (yCord - 1) && innerCurrent.getPosition().getX() == xCord) {
                         innerCurrent.setFieldstate(Field.GAP);
                     }
 
@@ -290,7 +290,7 @@ public class TestGameBoard extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_1fieldShip;

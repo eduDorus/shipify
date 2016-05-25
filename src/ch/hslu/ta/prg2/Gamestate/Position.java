@@ -16,4 +16,20 @@ public class Position {
     public int getY() {
         return y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!Position.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final Position other = (Position) obj;
+       
+        if (this.x != other.getX() || this.y != other.getY()) {
+            return false;
+        }
+        return true;
+    }
 }
