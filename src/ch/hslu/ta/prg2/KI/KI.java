@@ -22,7 +22,7 @@ public class KI {
     public KI(Gamestate state) {
 
         this.state = state;
-        this.field = Server.getInstance().getGamestate().getOpponent(state.getPlayer("bot").getName()).getField();
+        this.field = this.state.getOpponent(this.state.getPlayer("bot").getName()).getField();
         
         readLastShootFromFile();
         
@@ -31,25 +31,28 @@ public class KI {
             randomShoot();                   
         }
         
-        /*else if(field[x][y] == Field.WATER){
+        //sollte gar nie aufgerufen werden
+        //nach dem Schuss, nimmt wird das Feld 
+        //Field.HIT || Field.SHIPHIT || Field.SHIPDESTROYED
+        else if(field[this.x][this.y] == Field.WATER){
         
         randomShoot();
         
-        }*/
+        }
         
-        else if (field[x][y] == Field.HIT) {
+        else if (field[this.x][this.y] == Field.HIT) {
 
             randomShoot();
             
         }
 
-        else if (field[x][y] == Field.SHIPDESTROYED) {
+        else if (field[this.x][this.y] == Field.SHIPDESTROYED) {
 
             randomShoot();
             
         }
         
-        else if (field[x][y] == Field.SHIPHIT) {
+        else if (field[this.x][this.y] == Field.SHIPHIT) {
 
             shootAround(x, y);
             

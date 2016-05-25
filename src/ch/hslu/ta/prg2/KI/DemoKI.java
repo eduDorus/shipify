@@ -71,7 +71,7 @@ public class DemoKI {
             
             //Aufruf des BOTS, Methode Shoot
             for (int i = 0; i < 10; i++) {
-                KI ki = new KI(currentState);
+                KI ki = new KI(Server.getInstance().getGamestate());        
             }
             
         } catch (IOException ex) {
