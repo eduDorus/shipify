@@ -23,7 +23,6 @@ public class GameBoardController {
         Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
         opponentFields.stream().forEach((_item) -> {
             _item.setFieldstate(field[_item.getXCords()][_item.getYCords()]);
-            _item.updateIcon();
         });
     }
     

@@ -118,12 +118,12 @@ public class GameBoardPanel extends JPanel {
 
                     @Override
                     public void mouseEntered(MouseEvent me) {
-                        btn_playerField.setBackground(Color.green);
+                        btn_playerField.setTempFieldColor(Color.GREEN);
                     }
 
                     @Override
                     public void mouseExited(MouseEvent me) {
-                        btn_playerField.updateIcon();
+                        btn_playerField.resetTempFieldColor();
                     }
                 });
 
@@ -163,7 +163,6 @@ public class GameBoardPanel extends JPanel {
         Field[][] field = Server.getInstance().setShips(ships).getPlayer(Server.getInstance().getPlayerName()).getField();
         fieldButtonsPlayer.stream().forEach((button) -> {
             button.setFieldstate(field[button.getXCords()][button.getYCords()]);
-            button.updateIcon();
         });
 
         counter++;

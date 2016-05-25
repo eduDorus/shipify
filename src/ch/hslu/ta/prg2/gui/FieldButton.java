@@ -2,7 +2,6 @@ package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class FieldButton extends JButton {
@@ -14,12 +13,10 @@ public class FieldButton extends JButton {
     public FieldButton(int x, int y, Field fieldState) {
         this.x = x;
         this.y = y;
-        this.fieldstate = fieldState;
-        this.setBackground(Color.WHITE);
-        updateIcon();
+        setFieldstate(fieldState);
     }
 
-    public void updateIcon() {
+    private void updateIcon() {
         if (this.fieldstate == Field.WATER) {
             //this.setIcon(new ImageIcon(getClass().getResource("water.jpg")));
             this.setBackground(Color.blue);
@@ -47,6 +44,15 @@ public class FieldButton extends JButton {
 
     public void setFieldstate(Field fieldstate) {
         this.fieldstate = fieldstate;
+        updateIcon();
+    }
+    
+    public void setTempFieldColor(Color c){
+        this.setBackground(c);
+    }
+    
+    public void resetTempFieldColor(){
+        updateIcon();
     }
 
 }
