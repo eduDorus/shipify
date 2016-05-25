@@ -31,6 +31,12 @@ public class KI {
         
         readLastShootFromFile();
 
+        if(field[x][y] == Field.WATER){
+            
+            randomShoot();
+            
+        }
+        
         if (field[x][y] == Field.HIT) {
 
             randomShoot();
@@ -75,36 +81,57 @@ public class KI {
 
         Random randomInt = new Random();
 
-        int whichField = randomInt.nextInt(9);
+        int whichField = randomInt.nextInt(8);
 
         switch (whichField) {
 
             case 0:
-                Server.getInstance().shoot(x - 1, y);
+                this.x = x-1;
+                this.y = y;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 1:
-                Server.getInstance().shoot(x - 1, y - 1);
+                this.x = x-1;
+                this.y = y-1;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 2:
-                Server.getInstance().shoot(x - 1, y + 1);
+                this.x = x-1;
+                this.y = y+1;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 3:
-                Server.getInstance().shoot(x + 1, y);
+                this.x = x+1;
+                this.y = y;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 4:
-                Server.getInstance().shoot(x + 1, y - 1);
+                this.x = x+1;
+                this.y = y-1;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 5:
-                Server.getInstance().shoot(x + 1, y + 1);
+                this.x = x+1;
+                this.y = y+1;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
             case 6:
+                this.x = x;
+                this.y = y-1;
+                writeLastShootInFile();
                 Server.getInstance().shoot(x, y);
                 break;
             case 7:
-                Server.getInstance().shoot(x, y - 1);
-                break;
-            case 8:
-                Server.getInstance().shoot(x, y + 1);
+                this.x = x;
+                this.y = y+1;
+                writeLastShootInFile();
+                Server.getInstance().shoot(x, y);
                 break;
 
         }
@@ -126,7 +153,7 @@ public class KI {
     
         FileWriter fw = null;
         try {
-            fw = new FileWriter("test.txt");
+            fw = new FileWriter("lastBotShoot.txt");
             BufferedWriter out = new BufferedWriter(fw);
             out.write(x+"");
             out.newLine();
@@ -149,7 +176,7 @@ public class KI {
         
         FileReader fr = null;
         try {
-            fr = new FileReader("test.txt");
+            fr = new FileReader("lastBotShoot.txt");
             BufferedReader in = new BufferedReader(fr);
             String x = null;
             try {
