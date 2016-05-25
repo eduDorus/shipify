@@ -25,10 +25,13 @@ public class GameBoardPanel extends JPanel {
     private JPanel opponentField;
     private JPanel infoField;
 
+    private JButton turnShipButton;
+
     private ArrayList<FieldButton> fieldButtonsPlayer;
     private ArrayList<FieldButton> fieldButtonsOpponent;
 
     private int currentShipSize = 1;
+    private boolean directionVertical = false;
 
     public GameBoardPanel() {
         this.setLayout(new BorderLayout());
@@ -47,6 +50,7 @@ public class GameBoardPanel extends JPanel {
         playerField = new JPanel();
         opponentField = new JPanel();
         infoField = new JPanel();
+        turnShipButton = new JButton("Turn");
     }
 
     private void setOptions() {
@@ -64,6 +68,11 @@ public class GameBoardPanel extends JPanel {
         infoField.setPreferredSize(new Dimension(1200, 200));
         infoField.setMinimumSize(new Dimension(1200, 200));
         infoField.setSize(1200, 200);
+
+        turnShipButton.setFont(font1);
+        turnShipButton.addActionListener((ActionEvent e) -> {
+            directionVertical = !directionVertical;
+        });
     }
 
     private void createButtons() {
@@ -108,6 +117,7 @@ public class GameBoardPanel extends JPanel {
 
         this.add(playerField, BorderLayout.WEST);
         this.add(opponentField, BorderLayout.EAST);
+        infoField.add(turnShipButton);
         this.add(infoField, BorderLayout.SOUTH);
     }
 
@@ -128,20 +138,31 @@ public class GameBoardPanel extends JPanel {
     }
 
     /**
-     * Adds temporary Color and ActionListener to add the ship to the field if its a valid ship placement
-     * Does not do anything if not
-     * @param btn_playerField 
+     * Adds temporary Color and ActionListener to add the ship to the field if
+     * its a valid ship placement Does not do anything if not
+     *
+     * @param btn_playerField
      */
     private void displayShip(FieldButton btn_playerField) {
         ArrayList<Position> currentShip = new ArrayList<>();
-        
+
         //Return if ship is out of bounds
-        if(btn_playerField.getPosition().getY() + currentShipSize > 10){
+        if (directionVertical) {
+            if (btn_playerField.getPosition().getY() + currentShipSize > 10) {
+                return;
+            }
+        } else if (btn_playerField.getPosition().getX() + currentShipSize > 10) {
             return;
         }
 
         for (int i = 0; i < currentShipSize; i++) {
-            currentShip.add(new Position(btn_playerField.getPosition().getX(), btn_playerField.getPosition().getY() + i));
+            Position pos;
+            if (directionVertical) {
+                pos = new Position(btn_playerField.getPosition().getX(), btn_playerField.getPosition().getY() + i);
+            } else {
+                pos = new Position(btn_playerField.getPosition().getX() + i, btn_playerField.getPosition().getY());
+            }
+            currentShip.add(pos);
         }
 
         ArrayList<FieldButton> buttonsWithShip = new ArrayList<>();
@@ -154,8 +175,8 @@ public class GameBoardPanel extends JPanel {
             });
         });
 
-        for(FieldButton button : buttonsWithShip){
-           if (button.getFieldstate() != Field.WATER) {
+        for (FieldButton button : buttonsWithShip) {
+            if (button.getFieldstate() != Field.WATER) {
                 return;
             }
         }
