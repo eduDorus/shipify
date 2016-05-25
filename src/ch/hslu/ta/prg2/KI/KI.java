@@ -15,22 +15,21 @@ import java.util.logging.Logger;
 public class KI {
 
     private Gamestate state;
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
     private Field[][] field = Server.getInstance().getGamestate().getOpponent(Server.getInstance().getGamestate().getPlayer("bot").getName()).getField();
 
     public KI(Gamestate state) {
 
         this.state = state;
         
+        readLastShootFromFile();
         
         if (x == 0 && y == 0) {
             writeLastShootInFile();
             randomShoot();
         }
         
-        readLastShootFromFile();
-
         if(field[x][y] == Field.WATER){
             
             randomShoot();
