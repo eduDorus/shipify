@@ -17,11 +17,12 @@ public class KI {
     private Gamestate state;
     private int x;
     private int y;
-    private Field[][] field = Server.getInstance().getGamestate().getOpponent(Server.getInstance().getGamestate().getPlayer("bot").getName()).getField();
+    private Field[][] field; 
 
     public KI(Gamestate state) {
 
         this.state = state;
+        this.field = Server.getInstance().getGamestate().getOpponent(state.getPlayer("bot").getName()).getField();
         
         readLastShootFromFile();
         
@@ -30,11 +31,11 @@ public class KI {
             randomShoot();                   
         }
         
-        else if(field[x][y] == Field.WATER){
-            
-            randomShoot();
-                     
-        }
+        /*else if(field[x][y] == Field.WATER){
+        
+        randomShoot();
+        
+        }*/
         
         else if (field[x][y] == Field.HIT) {
 
