@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -31,7 +30,7 @@ public class GameBoardPanel extends JPanel {
     private ArrayList<FieldButton> fieldButtonsOpponent;
 
     private int currentShipSize = 1;
-    private boolean directionVertical = false;
+    private boolean directionVertical = true;
 
     public GameBoardPanel() {
         this.setLayout(new BorderLayout());
@@ -50,7 +49,7 @@ public class GameBoardPanel extends JPanel {
         playerField = new JPanel();
         opponentField = new JPanel();
         infoField = new JPanel();
-        turnShipButton = new JButton("Turn");
+        turnShipButton = new JButton("Turn Ship");
     }
 
     private void setOptions() {
@@ -114,7 +113,6 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void addObjects() {
-
         this.add(playerField, BorderLayout.WEST);
         this.add(opponentField, BorderLayout.EAST);
         infoField.add(turnShipButton);

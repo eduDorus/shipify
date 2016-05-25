@@ -8,11 +8,6 @@ import java.util.ArrayList;
 
 public class GameBoardController {
     
-    int shipOneAmount = 4;
-    int shipTwoAmount = 3;
-    int shipThreeAmount = 2;
-    int shipFourAmount = 1;
-        
     static void addShipActionListener(FieldButton fieldButton, ArrayList<FieldButton> playerFields) {
         
     }
