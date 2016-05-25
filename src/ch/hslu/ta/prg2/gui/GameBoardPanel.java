@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -117,7 +118,7 @@ public class GameBoardPanel extends JPanel {
             for (ActionListener act : button.getActionListeners()) {
                 button.removeActionListener(act);
             }
-            
+
             if (currentShipSize > 4) {
                 for (MouseListener mou : button.getMouseListeners()) {
                     button.removeMouseListener(mou);
@@ -126,22 +127,43 @@ public class GameBoardPanel extends JPanel {
         });
     }
 
+    /**
+     * Adds temporary Color and ActionListener to add the ship to the field if its a valid ship placement
+     * Does not do anything if not
+     * @param btn_playerField 
+     */
     private void displayShip(FieldButton btn_playerField) {
-        System.out.println("ch.hslu.ta.prg2.gui.GameBoardPanel.displayShip()");
         ArrayList<Position> currentShip = new ArrayList<>();
+        
+        //Return if ship is out of bounds
+        if(btn_playerField.getPosition().getY() + currentShipSize > 10){
+            return;
+        }
 
         for (int i = 0; i < currentShipSize; i++) {
             currentShip.add(new Position(btn_playerField.getPosition().getX(), btn_playerField.getPosition().getY() + i));
         }
 
+        ArrayList<FieldButton> buttonsWithShip = new ArrayList<>();
+
         fieldButtonsPlayer.stream().forEach((FieldButton) -> {
             currentShip.stream().forEach((shipPosition) -> {
                 if (FieldButton.getPosition().equals(shipPosition)) {
-                    FieldButton.setTempFieldColor(Color.GREEN);
-                    FieldButton.addActionListener((ActionEvent e) -> {
-                        addShipToGameBoard(currentShip);
-                    });
+                    buttonsWithShip.add(FieldButton);
                 }
+            });
+        });
+
+        for(FieldButton button : buttonsWithShip){
+           if (button.getFieldstate() != Field.WATER) {
+                return;
+            }
+        }
+
+        buttonsWithShip.forEach((button) -> {
+            button.setTempFieldColor(Color.GREEN);
+            button.addActionListener((ActionEvent e) -> {
+                addShipToGameBoard(currentShip);
             });
         });
     }
