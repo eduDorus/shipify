@@ -26,34 +26,34 @@ public class KI {
         readLastShootFromFile();
         
         if (x == 0 && y == 0) {
-            writeLastShootInFile();
-            randomShoot();
+     
+            randomShoot();                   
         }
         
-        if(field[x][y] == Field.WATER){
+        else if(field[x][y] == Field.WATER){
             
+            randomShoot();
+                     
+        }
+        
+        else if (field[x][y] == Field.HIT) {
+
+            randomShoot();
+            
+        }
+
+        else if (field[x][y] == Field.SHIPDESTROYED) {
+
             randomShoot();
             
         }
         
-        if (field[x][y] == Field.HIT) {
-
-            randomShoot();
-
-        }
-
-        if (field[x][y] == Field.SHIPHIT) {
+        else if (field[x][y] == Field.SHIPHIT) {
 
             shootAround(x, y);
-
+            
         }
-
-        if (field[x][y] == Field.SHIPDESTROYED) {
-
-            randomShoot();
-
-        }
-
+        
     }
 
     public Gamestate randomShoot() {
@@ -88,49 +88,49 @@ public class KI {
                 this.x = x-1;
                 this.y = y;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 1:
                 this.x = x-1;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 2:
                 this.x = x-1;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 3:
                 this.x = x+1;
                 this.y = y;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 4:
                 this.x = x+1;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 5:
                 this.x = x+1;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 6:
                 this.x = x;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
             case 7:
                 this.x = x;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(x, y);
+                Server.getInstance().shoot(this.x, this.y);
                 break;
 
         }
