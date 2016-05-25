@@ -25,24 +25,4 @@ public class GameBoardController {
             _item.setFieldstate(field[_item.getPosition().getX()][_item.getPosition().getY()]);
         });
     }
-    
-    static void startButtonActionListener() {
-        
-    }
-    
-    static void shipOneButtonActionListener() {
-        
-    }
-    
-    static void shipTwoButtonActionListener() {
-        
-    }
-    
-    static void shipThreeButtonActionListener() {
-        
-    }
-    
-    static void shipFourButtonActionListener() {
-        
-    }
 }
