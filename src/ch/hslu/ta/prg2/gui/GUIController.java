@@ -42,10 +42,6 @@ public class GUIController {
         langamepanel = new LanGamePanel();
     }
 
-    private static void createGameBoardPanel() {
-        gameboardpanel = new GameBoardPanel();
-    }
-
     public static void localButtonClicked() {
         if (startpanel.txt_nameField.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
@@ -79,8 +75,8 @@ public class GUIController {
     }
 
     static void newGameButtonActionListener() {
-        Server.getInstance().newBotGame();
-        createGameBoardPanel();
+        GameBoardController controller = new GameBoardController();
+        gameboardpanel = controller.startGame(Server.getInstance().newBotGame());
         mainframe.remove(savegamepanel);
         addPanel(gameboardpanel);
     }
@@ -94,9 +90,9 @@ public class GUIController {
     }
 
     static void newLanGameButtonActionListener() {
-        Server.getInstance().newGame();
-        createGameBoardPanel();
-        mainframe.remove(savegamepanel);
+        GameBoardController controller = new GameBoardController();
+        gameboardpanel = controller.startGame(Server.getInstance().newGame());
+        mainframe.remove(langamepanel);
         addPanel(gameboardpanel);
     }
 }
