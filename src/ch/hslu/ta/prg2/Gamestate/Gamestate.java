@@ -25,7 +25,7 @@ public class Gamestate implements Serializable {
             player2 = new Player("bot");
         }
     }
-    
+
     public Player getPlayer(String name) {
         if (this.player1.getName().equals(name)) {
             return player1;
@@ -44,5 +44,21 @@ public class Gamestate implements Serializable {
         }
 
         return null;
+    }
+
+    public GameSituation getSituation(String playerName) {
+        Player player = getPlayer(playerName);
+        Player oponent = getOpponent(playerName);
+        if (!player.shipsAreSet()) {
+            return GameSituation.SETSHIPS;
+        }
+
+        if (player.shipsAreSet() && oponent != null && oponent.shipsAreSet()) {
+            return GameSituation.WAITINGONOPONENTSHIPS;
+        }
+
+        ///implement Gamesituation Logic
+        return GameSituation.SHOOT;
+
     }
 }

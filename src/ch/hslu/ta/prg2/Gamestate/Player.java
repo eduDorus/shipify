@@ -61,4 +61,12 @@ public class Player {
     private boolean hasShot(int x, int y) {
         return shoots.stream().anyMatch((s) -> (s.position().getX() == x && s.position().getY() == y));
     }
+
+    public boolean shipsAreSet() {
+        if (ships.size() == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
