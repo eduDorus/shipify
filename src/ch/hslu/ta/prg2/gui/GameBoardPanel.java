@@ -1,20 +1,11 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
-import ch.hslu.ta.prg2.Gamestate.Gamestate;
-import ch.hslu.ta.prg2.Gamestate.Position;
-import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -81,24 +72,8 @@ public class GameBoardPanel extends JPanel {
                 FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
                 controller.fieldButtonsPlayer.add(btn_playerField);
 
-                btn_playerField.addMouseListener(new MouseAdapter() {
-
-                    @Override
-                    public void mouseEntered(MouseEvent me) {
-                        controller.displayShip(btn_playerField);
-                    }
-
-                    @Override
-                    public void mouseExited(MouseEvent me) {
-                        controller.removeAllTempColorAndListener();
-                    }
-                });
-
                 FieldButton btn_opponentField = new FieldButton(x, y, Field.WATER);
                 controller.fieldButtonsOpponent.add(btn_opponentField);
-                btn_opponentField.addActionListener((ActionEvent e) -> {
-                    controller.opponentFieldActionListener(btn_opponentField);
-                });
 
                 playerField.add(btn_playerField);
                 opponentField.add(btn_opponentField);

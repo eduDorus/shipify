@@ -1,12 +1,15 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.GameSituation;
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
@@ -23,8 +26,51 @@ public class GameBoardController {
         this.fieldButtonsPlayer = new ArrayList<>();
         this.fieldButtonsOpponent = new ArrayList<>();
         GameBoardPanel panel = new GameBoardPanel(this);
-
+        loadGameSituation(state);
         return panel;
+    }
+
+    private void loadGameSituation(Gamestate state) {
+        GameSituation currentSituation = state.getSituation(Server.getInstance().getPlayerName());
+        switch (currentSituation) {
+            case SETSHIPS:
+                prepareSetShips();
+                break;
+            case WAITINGONOPONENTSHIPS:
+
+                break;
+            case SHOOT:
+                prepareShoot();
+                break;
+            case WAIT:
+
+                break;
+        }
+    }
+
+    private void prepareSetShips() {
+        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+            FieldButton.addMouseListener(new MouseAdapter() {
+
+                @Override
+                public void mouseEntered(MouseEvent me) {
+                    displayShip(FieldButton);
+                }
+
+                @Override
+                public void mouseExited(MouseEvent me) {
+                    removeAllTempColorAndListener();
+                }
+            });
+        });
+    }
+
+    private void prepareShoot() {
+        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+            FieldButton.addActionListener((ActionEvent e) -> {
+                opponentFieldActionListener(FieldButton);
+            });
+        });
     }
 
     /**
@@ -33,7 +79,7 @@ public class GameBoardController {
      *
      * @param btn_playerField
      */
-    public void displayShip(FieldButton btn_playerField) {
+    private void displayShip(FieldButton btn_playerField) {
         ArrayList<Position> currentShip = new ArrayList<>();
 
         //Return if ship is out of bounds
@@ -99,7 +145,7 @@ public class GameBoardController {
         });
     }
 
-    public void removeAllTempColorAndListener() {
+    private void removeAllTempColorAndListener() {
         fieldButtonsPlayer.stream().forEach((button) -> {
             button.resetTempFieldColor();
 
