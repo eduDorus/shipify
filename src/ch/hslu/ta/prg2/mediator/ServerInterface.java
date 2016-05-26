@@ -10,9 +10,7 @@ public interface ServerInterface {
 
     public Gamestate newBotGame();
 
-    public Gamestate setShips(ArrayList<ArrayList<Position>> ships);
+    public Gamestate setShips(String localPlayerName, ArrayList<ArrayList<Position>> ships);
 
-    public Gamestate shoot(int x, int y);
-
-    public Gamestate getGamestate();
+    public Gamestate shoot(String localPlayerName, int x, int y);
 }

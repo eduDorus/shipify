@@ -35,24 +35,23 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate setShips(ArrayList<ArrayList<Position>> ships) {
+    public Gamestate setShips(String name, ArrayList<ArrayList<Position>> ships) {
         ships.stream().map((positions) -> new Ship(positions)).forEach((s) -> {
-            this.gamestate.getPlayer(playerName).getShips().add(s);
+            this.gamestate.getPlayer(name).getShips().add(s);
         });
         return gamestate;
     }
 
     @Override
-    public Gamestate shoot(int x, int y) {
-        gamestate.getOpponent(playerName).addShoot(x, y);
+    public Gamestate shoot(String name, int x, int y) {
+        gamestate.getOpponent(name).addShoot(x, y);
         return gamestate;
     }
 
-    @Override
-    public Gamestate getGamestate() {
+     public Gamestate getGamestate() {
         return gamestate;
     }
-
+    
     public String getPlayerName() {
         return playerName;
     }

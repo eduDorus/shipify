@@ -67,7 +67,7 @@ public class DemoKI {
             ships.add(ship2);
 
             //Aufruf der Methode setShips des Servers
-            Gamestate currentState = Server.getInstance().setShips(ships);
+            Gamestate currentState = Server.getInstance().setShips("Marco", ships);
             
             //Aufruf des BOTS, Methode Shoot
             for (int i = 0; i < 10; i++) {

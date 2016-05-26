@@ -72,7 +72,7 @@ public class KI {
             randomShoot();
         }
         
-        Server.getInstance().shoot(x, y);
+        Server.getInstance().shoot("bot", x, y);
         
         writeLastShootInFile();
 
@@ -92,49 +92,49 @@ public class KI {
                 this.x = x-1;
                 this.y = y;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 1:
                 this.x = x-1;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 2:
                 this.x = x-1;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 3:
                 this.x = x+1;
                 this.y = y;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 4:
                 this.x = x+1;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 5:
                 this.x = x+1;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 6:
                 this.x = x;
                 this.y = y-1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
             case 7:
                 this.x = x;
                 this.y = y+1;
                 writeLastShootInFile();
-                Server.getInstance().shoot(this.x, this.y);
+                Server.getInstance().shoot("bot",this.x, this.y);
                 break;
 
         }

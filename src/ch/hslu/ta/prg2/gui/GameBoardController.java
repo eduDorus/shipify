@@ -84,7 +84,7 @@ public class GameBoardController {
     }
 
     public void opponentFieldActionListener(FieldButton fieldButton) {
-        Gamestate gamestate = Server.getInstance().shoot(fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
+        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayerName(), fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
 
         Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
         fieldButtonsOpponent.stream().forEach((_item) -> {
@@ -120,7 +120,7 @@ public class GameBoardController {
 
         ships.add(ship);
 
-        Gamestate state = Server.getInstance().setShips(ships);
+        Gamestate state = Server.getInstance().setShips(Server.getInstance().getPlayerName(), ships);
 
         updateField(state);
 
