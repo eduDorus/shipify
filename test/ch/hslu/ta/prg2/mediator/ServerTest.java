@@ -21,7 +21,8 @@ public class ServerTest {
 
     @BeforeClass
     public static void setUpClass() {
-        Server.getInstance().newGame(myName);
+        Server.getInstance().setPlayerName(myName);
+        Server.getInstance().newGame();
     }
 
     @AfterClass
@@ -42,28 +43,28 @@ public class ServerTest {
         System.out.println("getInstance");
         Server expResult = null;
         Server result = Server.getInstance();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        //assertEquals(expResult, result);
+        assertThat(result, not(expResult));
     }
 
     @Test
     public void testNewGame() {
         System.out.println("newGame");
-        Server instance = null;
+        Server instance = Server.getInstance();
         Gamestate expResult = null;
-        Gamestate result = instance.newGame("localplayer");
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Gamestate result = Server.getInstance().newGame();
+        //assertEquals(expResult, result);
+        assertThat(result, not(expResult));
     }
 
     @Test
     public void testNewBotGame() {
         System.out.println("newBotGame");
-        Server instance = null;
+        Server instance = Server.getInstance();
         Gamestate expResult = null;
-        Gamestate result = instance.newBotGame("localplayer");
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Gamestate result = Server.getInstance().newBotGame();
+        //assertEquals(expResult, result);
+        assertThat(result, not(expResult));
     }
 
     @Test
@@ -116,7 +117,7 @@ public class ServerTest {
 
     @Test
     public void testGetField() {
-        Gamestate testGame = Server.getInstance().newBotGame(myName);
+        Gamestate testGame = Server.getInstance().newBotGame();
         Field[][] fields = testGame.getPlayer(myName).getField();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
