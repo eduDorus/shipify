@@ -7,6 +7,6 @@ public class Shipify {
     public static void main(String[] args) {
 
         GUIController superController = new GUIController();
-        
+
     }
 }

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private String name;
-    private ArrayList<Ship> ships;
-    private ArrayList<Shoot> shoots;
+    private final String name;
+    private final ArrayList<Ship> ships;
+    private final ArrayList<Shoot> shoots;
 
     public Player(String name) {
         this.name = name;
@@ -82,11 +82,10 @@ public class Player {
             }
             //If no ship is alive -> plyer obivously lost
             return true;
-        }else{
+        } else {
             //If ships are not set yet -> player has no lost
             return false;
         }
-
     }
 
     private boolean hasShip(int x, int y) {
@@ -107,10 +106,6 @@ public class Player {
     }
 
     public boolean shipsAreSet() {
-        if (ships.size() == 4) {
-            return true;
-        } else {
-            return false;
-        }
+        return ships.size() == 4;
     }
 }

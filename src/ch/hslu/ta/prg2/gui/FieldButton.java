@@ -57,5 +57,4 @@ public class FieldButton extends JButton {
     public void resetTempFieldColor() {
         updateIcon();
     }
-
 }

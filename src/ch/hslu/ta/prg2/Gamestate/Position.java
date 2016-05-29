@@ -6,8 +6,8 @@ public class Position {
         this.x = x;
         this.y = y;
     }
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public int getX() {
         return x;
@@ -26,10 +26,18 @@ public class Position {
             return false;
         }
         final Position other = (Position) obj;
-       
+
         if (this.x != other.getX() || this.y != other.getY()) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.x;
+        hash = 67 * hash + this.y;
+        return hash;
     }
 }

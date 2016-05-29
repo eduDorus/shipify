@@ -8,7 +8,7 @@ public enum Field {
     SHIP(true),
     GAP(true);
 
-    private boolean shotable;
+    private final boolean shotable;
 
     private Field(final boolean shotable) {
         this.shotable = shotable;

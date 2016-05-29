@@ -1,7 +1,11 @@
 package ch.hslu.ta.prg2.KI;
 
-import ch.hslu.ta.prg2.Gamestate.*;
-import ch.hslu.ta.prg2.mediator.*;
+import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.Gamestate;
+import ch.hslu.ta.prg2.Gamestate.Position;
+import ch.hslu.ta.prg2.Gamestate.Ship;
+import ch.hslu.ta.prg2.Gamestate.Shoot;
+import ch.hslu.ta.prg2.mediator.Server;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -29,13 +33,13 @@ public class KI {
             ships.add(s);
         }
 
-        ArrayList<ArrayList<Position>> positoins = new ArrayList<>();
+        ArrayList<ArrayList<Position>> positions = new ArrayList<>();
 
         ships.stream().forEach((s) -> {
-            positoins.add(s.getPositions());
+            positions.add(s.getPositions());
         });
 
-        Server.getInstance().setShips("bot", positoins);
+        Server.getInstance().setShips("bot", positions);
     }
 
     private Ship GetRandomShip(int size) {
@@ -75,7 +79,7 @@ public class KI {
     }
 
     public void shoot() {
-       
+
         Shoot s = calculateBestShot();
 
         while (!isShotValid(s)) {
@@ -88,8 +92,8 @@ public class KI {
     private boolean isShotValid(Shoot s) {
         int x = s.position().getX();
         int y = s.position().getY();
-        
-        if(x > 9 || y > 9){
+
+        if (x > 9 || y > 9) {
             return false;
         }
 
@@ -122,7 +126,7 @@ public class KI {
             int index = random.nextInt(results.size());
             return results.get(index);
         }
-        
+
         return GetRandomShot();
     }
 

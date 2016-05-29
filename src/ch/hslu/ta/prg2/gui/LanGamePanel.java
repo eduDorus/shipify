@@ -34,7 +34,7 @@ public class LanGamePanel extends JPanel {
 
         list_savedGamesList = new JList();
     }
-       
+
     private void setOptions() {
         this.setLayout(null);
 
@@ -55,9 +55,7 @@ public class LanGamePanel extends JPanel {
         btn_back.addActionListener((ActionEvent e) -> {
             GUIController.backLanGamePanelActionListener();
         });
-//        btn_selectGame.addActionListener((ActionEvent e) -> {
-//            SuperController.startButtonActionListener();
-//        });
+
         btn_newGame.addActionListener((ActionEvent e) -> {
             GUIController.newLanGameButtonActionListener();
         });
