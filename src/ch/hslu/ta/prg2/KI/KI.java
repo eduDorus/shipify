@@ -7,48 +7,75 @@ import java.util.ArrayList;
 
 public class KI {
 
-    private Gamestate state;
-    private Field[][] field;
+    private final Gamestate state;
+    private final Field[][] field;
+    private final Random random = new Random();
 
     public KI(Gamestate state) {
-
         this.state = state;
         this.field = this.state.getOpponent("bot").getField();
     }
 
     public void setShips() {
-        //Should be dynamic...
+        ArrayList<Ship> ships;
+        ships = new ArrayList<>();
 
-        ArrayList<Position> ship1 = new ArrayList<>();
-        ship1.add(new Position(1, 2));
+        for (int size = 4; size > 0; size--) {
+            Ship s = GetRandomShip(size);
 
-        ArrayList<Position> ship2 = new ArrayList<>();
-        ship2.add(new Position(3, 4));
-        ship2.add(new Position(3, 5));
+            while (!isShipValid(ships, s)) {
+                s = GetRandomShip(size);
+            }
+            ships.add(s);
+        }
 
-        ArrayList<Position> ship3 = new ArrayList<>();
-        ship3.add(new Position(6, 2));
-        ship3.add(new Position(7, 2));
-        ship3.add(new Position(8, 2));
+        ArrayList<ArrayList<Position>> positoins = new ArrayList<>();
 
-        ArrayList<Position> ship4 = new ArrayList<>();
-        ship4.add(new Position(8, 4));
-        ship4.add(new Position(8, 5));
-        ship4.add(new Position(8, 6));
-        ship4.add(new Position(8, 7));
+        ships.stream().forEach((s) -> {
+            positoins.add(s.getPositions());
+        });
 
-        ArrayList<ArrayList<Position>> ships = new ArrayList<>();
-        ships.add(ship1);
-        ships.add(ship2);
-        ships.add(ship3);
-        ships.add(ship4);
+        Server.getInstance().setShips("bot", positoins);
+    }
 
-        Server.getInstance().setShips("bot", ships);
+    private Ship GetRandomShip(int size) {
+        ArrayList<Position> positions;
+        positions = new ArrayList<>();
+
+        Position p;
+        Boolean horizontal = getRandomBool();
+
+        if (horizontal) {
+            p = getRandomPosition(10 - size, 10);
+        } else {
+            p = getRandomPosition(10, 10 - size);
+        }
+        
+        for (int i = 0; i < size; i++) {
+            if (horizontal) {
+
+                positions.add(new Position(p.getX() + i, p.getY()));
+            } else {
+
+                positions.add(new Position(p.getX(), p.getY() + i));
+            }
+        }
+        return new Ship(positions);
+    }
+
+    private boolean isShipValid(ArrayList<Ship> ships, Ship s) {
+
+        for (Position p : s.getPositions()) {
+            for (Ship ship : ships) {
+                return !ship.hasPosition(p);
+            }
+        }
+
+        return true;
     }
 
     public void shoot() {
         //Should be more inteligent...
-
         Shoot s = GetRandomShot();
 
         while (!isShotValid(s)) {
@@ -66,12 +93,18 @@ public class KI {
     }
 
     private Shoot GetRandomShot() {
+        Position pos = getRandomPosition(10, 10);
+        return new Shoot(pos.getX(), pos.getY());
+    }
 
-        Random randomInt = new Random();
+    private Position getRandomPosition(int boundsX, int boundsY) {
+        int x = random.nextInt(boundsX);
+        int y = random.nextInt(boundsY);
 
-        int x = randomInt.nextInt(10);
-        int y = randomInt.nextInt(10);
+        return new Position(x, y);
+    }
 
-        return new Shoot(x, y);
+    private boolean getRandomBool() {
+        return random.nextBoolean();
     }
 }
