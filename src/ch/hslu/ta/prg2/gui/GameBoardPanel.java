@@ -38,7 +38,7 @@ public class GameBoardPanel extends JPanel {
         opponentField = new JPanel();
         infoField = new JPanel();
         turnShipButton = new JButton("Turn Ship");
-        infoLabel = new JLabel("asdf");
+        infoLabel = new JLabel("");
     }
 
     private void setOptions() {

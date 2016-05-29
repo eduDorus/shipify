@@ -51,12 +51,7 @@ public class SaveGamePanel extends JPanel {
         btn_back.addActionListener((ActionEvent e) -> {
             GUIController.backSaveGamePanelActionListener();
         });
-//        btn_delGame.addActionListener((ActionEvent e) -> {
-//            SuperController.startButtonActionListener();
-//        });
-//        btn_selectGame.addActionListener((ActionEvent e) -> {
-//            SuperController.startButtonActionListener();
-//        });
+        
         btn_newGame.addActionListener((ActionEvent e) -> {
             GUIController.newGameButtonActionListener();
         });

@@ -1,9 +1,6 @@
 package ch.hslu.ta.prg2.gui;
 
-import ch.hslu.ta.prg2.Gamestate.Field;
-import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.mediator.Server;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
