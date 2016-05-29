@@ -3,6 +3,7 @@ package ch.hslu.ta.prg2.mediator;
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.Gamestate.Ship;
+import ch.hslu.ta.prg2.KI.KI;
 import java.util.ArrayList;
 
 public class Server implements ServerInterface {
@@ -31,6 +32,10 @@ public class Server implements ServerInterface {
     @Override
     public Gamestate newBotGame() {
         this.gamestate = new Gamestate(this.playerName, true);
+
+        KI ki = new KI(this.gamestate);
+        ki.setShips();
+        
         return gamestate;
     }
 
@@ -48,10 +53,10 @@ public class Server implements ServerInterface {
         return gamestate;
     }
 
-     public Gamestate getGamestate() {
+    public Gamestate getGamestate() {
         return gamestate;
     }
-    
+
     public String getPlayerName() {
         return playerName;
     }
