@@ -50,7 +50,7 @@ public class KI {
         } else {
             p = getRandomPosition(10, 10 - size);
         }
-        
+
         for (int i = 0; i < size; i++) {
             if (horizontal) {
 
@@ -75,8 +75,8 @@ public class KI {
     }
 
     public void shoot() {
-        //Should be more inteligent...
-        Shoot s = GetRandomShot();
+       
+        Shoot s = calculateBestShot();
 
         while (!isShotValid(s)) {
             s = GetRandomShot();
@@ -88,8 +88,42 @@ public class KI {
     private boolean isShotValid(Shoot s) {
         int x = s.position().getX();
         int y = s.position().getY();
+        
+        if(x > 9 || y > 9){
+            return false;
+        }
 
         return this.field[x][y].isShootable();
+    }
+
+    private Shoot calculateBestShot() {
+        ArrayList<Shoot> posibleTargets;
+        posibleTargets = new ArrayList<>();
+
+        ArrayList<Shoot> results;
+        results = new ArrayList<>();
+
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y < 10; y++) {
+                if (field[x][y] == Field.SHIPHIT) {
+                    posibleTargets.add(new Shoot(x + 1, y));
+                    posibleTargets.add(new Shoot(x - 1, y));
+                    posibleTargets.add(new Shoot(x, y + 1));
+                    posibleTargets.add(new Shoot(x, y - 1));
+                }
+            }
+        }
+
+        posibleTargets.stream().filter((s) -> (isShotValid(s))).forEach((s) -> {
+            results.add(s);
+        });
+
+        if (results.size() > 0) {
+            int index = random.nextInt(results.size());
+            return results.get(index);
+        }
+        
+        return GetRandomShot();
     }
 
     private Shoot GetRandomShot() {
