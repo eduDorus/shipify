@@ -56,16 +56,16 @@ public class StartPanel extends JPanel {
 
         txt_nameField.setFont(font1);
 
-        lbl_declareName.setBounds(100, 150, 300, 50);
-        txt_nameField.setBounds(100, 250, 300, 50);
+        lbl_declareName.setBounds(450, 250, 300, 50);
+        txt_nameField.setBounds(450, 325, 300, 50);
 
         btn_LOCAL.setFont(font1);
         btn_LAN.setFont(font1);
 
-        btn_LOCAL.setBounds(100, 450, 300, 50);
-        btn_LAN.setBounds(100, 350, 300, 50);
+        btn_LOCAL.setBounds(450, 425, 300, 50);
+        btn_LAN.setBounds(450, 500, 300, 50);
 
-        lbl_imgtitle.setBounds(550, 400, 500, 300);
+        lbl_imgtitle.setBounds(350, 0, 500, 300);
 
         btn_LOCAL.addActionListener((ActionEvent e) -> {
             GUIController.localButtonClicked();
@@ -85,6 +85,5 @@ public class StartPanel extends JPanel {
         this.add(btn_LAN);
 
         this.add(lbl_imgtitle);
-
     }
 }

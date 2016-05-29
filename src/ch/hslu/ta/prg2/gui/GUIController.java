@@ -41,7 +41,7 @@ public class GUIController {
 
     public static void localButtonClicked() {
         if (startpanel.txt_nameField.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
+            JOptionPane.showMessageDialog(mainframe, "Bitte geben Sie ihren Namen an.", "Achtung", JOptionPane.OK_CANCEL_OPTION);
         } else {
             Server.getInstance().setPlayerName(startpanel.txt_nameField.getText());
             createSaveGamePanel();
