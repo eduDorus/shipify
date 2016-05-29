@@ -49,16 +49,24 @@ public class Gamestate implements Serializable {
     public GameSituation getSituation(String playerName) {
         Player player = getPlayer(playerName);
         Player oponent = getOpponent(playerName);
+
         if (!player.shipsAreSet()) {
             return GameSituation.SETSHIPS;
         }
 
-        if (player.shipsAreSet() && oponent != null && oponent.shipsAreSet()) {
+        if (oponent == null) {
+            return GameSituation.WAITINGFONOPONENT;
+        }
+
+        if (player.shipsAreSet() && !oponent.shipsAreSet()) {
             return GameSituation.WAITINGONOPONENTSHIPS;
         }
 
-        ///implement Gamesituation Logic
-        return GameSituation.SHOOT;
+        //Player is allowed to shoot, if he has shoot the same amount or less than his oponent
+        if (player.getShoots().size() <= oponent.getShips().size()) {
+            return GameSituation.SHOOT;
+        }
 
+        return GameSituation.WAIT;
     }
 }
