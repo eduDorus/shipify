@@ -60,13 +60,14 @@ public class GameBoardController {
                 break;
             case WAIT:
                 noShotsAllowed();
-
                 break;
             case LOSS:
+                noShotsAllowed();
+                break;
             case VICTORY:
-
+                noShotsAllowed();
+                break;
             case ERROR:
-
                 break;
         }
     }

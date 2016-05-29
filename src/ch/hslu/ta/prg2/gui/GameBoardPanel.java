@@ -95,6 +95,7 @@ public class GameBoardPanel extends JPanel {
     public void changePanelforGameSituation(GameSituation currentSituation) {
         
         turnShipButton.setVisible(false);
+        infoLabel.setText("");
         switch (currentSituation) {
             case SETSHIPS:
                 turnShipButton.setVisible(true);
@@ -109,6 +110,10 @@ public class GameBoardPanel extends JPanel {
             case WAIT:
                 infoLabel.setText("Auf das gegnerische Feuer wird gewartet.");
                 break;
+            case LOSS:
+                infoLabel.setText("Leider Verloren");
+            case VICTORY:
+                infoLabel.setText("Gratulation. Sie haben gewonnen.");
         }
     }
 }

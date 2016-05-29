@@ -62,11 +62,19 @@ public class Gamestate implements Serializable {
             return GameSituation.WAITINGONOPONENTSHIPS;
         }
 
+        if (player.hasLost()) {
+            return GameSituation.LOSS;
+        }
+        
+        if (oponent.hasLost()) {
+            return GameSituation.VICTORY;
+        }
+        
         //Player is allowed to shoot, if he has shoot the same amount or less than his oponent
         if (player.getShoots().size() >= oponent.getShoots().size()) {
             return GameSituation.SHOOT;
         }
-
+        
         return GameSituation.WAIT;
     }
 }

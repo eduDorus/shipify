@@ -23,19 +23,19 @@ public class KI {
         ship1.add(new Position(1, 2));
 
         ArrayList<Position> ship2 = new ArrayList<>();
-        ship1.add(new Position(3, 4));
-        ship1.add(new Position(3, 5));
+        ship2.add(new Position(3, 4));
+        ship2.add(new Position(3, 5));
 
         ArrayList<Position> ship3 = new ArrayList<>();
-        ship2.add(new Position(6, 2));
-        ship2.add(new Position(7, 2));
-        ship2.add(new Position(8, 2));
+        ship3.add(new Position(6, 2));
+        ship3.add(new Position(7, 2));
+        ship3.add(new Position(8, 2));
 
         ArrayList<Position> ship4 = new ArrayList<>();
-        ship2.add(new Position(8, 4));
-        ship2.add(new Position(8, 5));
-        ship2.add(new Position(8, 6));
-        ship2.add(new Position(8, 7));
+        ship4.add(new Position(8, 4));
+        ship4.add(new Position(8, 5));
+        ship4.add(new Position(8, 6));
+        ship4.add(new Position(8, 7));
 
         ArrayList<ArrayList<Position>> ships = new ArrayList<>();
         ships.add(ship1);

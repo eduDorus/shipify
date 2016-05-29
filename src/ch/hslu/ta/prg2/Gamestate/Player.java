@@ -39,8 +39,12 @@ public class Player {
             for (int y = 0; y < 10; y++) {
                 if (hasShot(x, y)) {
                     if (hasShip(x, y)) {
-                        //Add ships is dead
-                        fields[x][y] = Field.SHIPHIT;
+                        Ship s = getShip(new Position(x, y));
+                        if (s.isDead(shoots)) {
+                            fields[x][y] = Field.SHIPDESTROYED;
+                        } else {
+                            fields[x][y] = Field.SHIPHIT;
+                        }
                     } else {
                         fields[x][y] = Field.HIT;
                     }
@@ -67,12 +71,39 @@ public class Player {
         return fields;
     }
 
+    public boolean hasLost() {
+
+        if (shipsAreSet()) {
+            for (Ship s : ships) {
+                if (!s.isDead(shoots)) {
+                    //If one ship is not dead -> player has not lost yet
+                    return false;
+                }
+            }
+            //If no ship is alive -> plyer obivously lost
+            return true;
+        }else{
+            //If ships are not set yet -> player has no lost
+            return false;
+        }
+
+    }
+
     private boolean hasShip(int x, int y) {
         return ships.stream().anyMatch((s) -> (s.getPositions().stream().anyMatch((p) -> (p.getX() == x && p.getY() == y))));
     }
 
     private boolean hasShot(int x, int y) {
         return shoots.stream().anyMatch((s) -> (s.position().getX() == x && s.position().getY() == y));
+    }
+
+    private Ship getShip(Position p) {
+        for (Ship s : ships) {
+            if (s.hasPosition(p)) {
+                return s;
+            }
+        }
+        return null;
     }
 
     public boolean shipsAreSet() {
