@@ -55,7 +55,7 @@ public class Gamestate implements Serializable {
         }
 
         if (oponent == null) {
-            return GameSituation.WAITINGFONOPONENT;
+            return GameSituation.WAITINGONOPONENT;
         }
 
         if (player.shipsAreSet() && !oponent.shipsAreSet()) {
@@ -70,7 +70,7 @@ public class Gamestate implements Serializable {
             return GameSituation.VICTORY;
         }
 
-        //Player is allowed to shoot, if he has shoot the same amount or less than his oponent
+        //Player is allowed to shot, if he has shot the same amount or less than his oponent
         if (player.getShoots().size() >= oponent.getShoots().size()) {
             return GameSituation.SHOOT;
         }

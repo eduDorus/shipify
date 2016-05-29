@@ -1,10 +1,10 @@
 package ch.hslu.ta.prg2.Gamestate;
 
-public class Shoot {
+public class Shot {
 
     private final Position position;
 
-    public Shoot(int x, int y) {
+    public Shot(int x, int y) {
         this.position = new Position(x, y);
     }
 

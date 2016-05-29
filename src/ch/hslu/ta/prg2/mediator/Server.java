@@ -48,11 +48,11 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public Gamestate shoot(String name, int x, int y) {
+    public Gamestate shot(String name, int x, int y) {
         gamestate.getOpponent(name).addShoot(x, y);
         if (gamestate.getOpponent(name).getName().equals("bot")) {
             KI ki = new KI(this.gamestate);
-            ki.shoot();
+            ki.shot();
         }
         return gamestate;
     }

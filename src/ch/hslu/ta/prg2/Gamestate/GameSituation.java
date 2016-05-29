@@ -2,7 +2,7 @@ package ch.hslu.ta.prg2.Gamestate;
 
 public enum GameSituation {
     SETSHIPS,
-    WAITINGFONOPONENT,
+    WAITINGONOPONENT,
     WAITINGONOPONENTSHIPS,
     SHOOT,
     WAIT,

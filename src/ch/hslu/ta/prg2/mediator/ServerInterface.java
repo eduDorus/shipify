@@ -12,5 +12,5 @@ public interface ServerInterface {
 
     public Gamestate setShips(String localPlayerName, ArrayList<ArrayList<Position>> ships);
 
-    public Gamestate shoot(String localPlayerName, int x, int y);
+    public Gamestate shot(String localPlayerName, int x, int y);
 }

@@ -4,7 +4,7 @@ import ch.hslu.ta.prg2.Gamestate.Field;
 import ch.hslu.ta.prg2.Gamestate.Gamestate;
 import ch.hslu.ta.prg2.Gamestate.Position;
 import ch.hslu.ta.prg2.Gamestate.Ship;
-import ch.hslu.ta.prg2.Gamestate.Shoot;
+import ch.hslu.ta.prg2.Gamestate.Shot;
 import ch.hslu.ta.prg2.mediator.Server;
 import java.util.Random;
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class KI {
         ships = new ArrayList<>();
 
         for (int size = 4; size > 0; size--) {
-            Ship s = GetRandomShip(size);
+            Ship s = getRandomShip(size);
 
             while (!isShipValid(ships, s)) {
-                s = GetRandomShip(size);
+                s = getRandomShip(size);
             }
             ships.add(s);
         }
@@ -42,7 +42,7 @@ public class KI {
         Server.getInstance().setShips("bot", positions);
     }
 
-    private Ship GetRandomShip(int size) {
+    private Ship getRandomShip(int size) {
         ArrayList<Position> positions;
         positions = new ArrayList<>();
 
@@ -78,18 +78,18 @@ public class KI {
         return true;
     }
 
-    public void shoot() {
+    public void shot() {
 
-        Shoot s = calculateBestShot();
+        Shot s = calculateBestShot();
 
         while (!isShotValid(s)) {
-            s = GetRandomShot();
+            s = getRandomShot();
         }
 
-        Server.getInstance().shoot("bot", s.position().getX(), s.position().getY());
+        Server.getInstance().shot("bot", s.position().getX(), s.position().getY());
     }
 
-    private boolean isShotValid(Shoot s) {
+    private boolean isShotValid(Shot s) {
         int x = s.position().getX();
         int y = s.position().getY();
 
@@ -100,20 +100,20 @@ public class KI {
         return this.field[x][y].isShootable();
     }
 
-    private Shoot calculateBestShot() {
-        ArrayList<Shoot> posibleTargets;
+    private Shot calculateBestShot() {
+        ArrayList<Shot> posibleTargets;
         posibleTargets = new ArrayList<>();
 
-        ArrayList<Shoot> results;
+        ArrayList<Shot> results;
         results = new ArrayList<>();
 
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 if (field[x][y] == Field.SHIPHIT) {
-                    posibleTargets.add(new Shoot(x + 1, y));
-                    posibleTargets.add(new Shoot(x - 1, y));
-                    posibleTargets.add(new Shoot(x, y + 1));
-                    posibleTargets.add(new Shoot(x, y - 1));
+                    posibleTargets.add(new Shot(x + 1, y));
+                    posibleTargets.add(new Shot(x - 1, y));
+                    posibleTargets.add(new Shot(x, y + 1));
+                    posibleTargets.add(new Shot(x, y - 1));
                 }
             }
         }
@@ -127,12 +127,12 @@ public class KI {
             return results.get(index);
         }
 
-        return GetRandomShot();
+        return getRandomShot();
     }
 
-    private Shoot GetRandomShot() {
+    private Shot getRandomShot() {
         Position pos = getRandomPosition(10, 10);
-        return new Shoot(pos.getX(), pos.getY());
+        return new Shot(pos.getX(), pos.getY());
     }
 
     private Position getRandomPosition(int boundsX, int boundsY) {

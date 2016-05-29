@@ -19,10 +19,10 @@ public class Ship {
         return positions.stream().anyMatch((p) -> (p.equals(questionPosition)));
     }
 
-    boolean isDead(ArrayList<Shoot> shots) {
+    boolean isDead(ArrayList<Shot> shots) {
         int lives = getPositions().size();
 
-        for (Shoot s : shots) {
+        for (Shot s : shots) {
             if (hasPosition(s.position())) {
                 lives = lives - 1;
             }

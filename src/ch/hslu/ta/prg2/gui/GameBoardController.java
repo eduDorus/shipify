@@ -48,7 +48,7 @@ public class GameBoardController {
             case SETSHIPS:
                 prepareSetShips();
                 break;
-            case WAITINGFONOPONENT:
+            case WAITINGONOPONENT:
                 cleanUpAferShipsSet();
                 break;
             case WAITINGONOPONENTSHIPS:
@@ -181,7 +181,7 @@ public class GameBoardController {
     }
 
     private void shot(FieldButton fieldButton) {
-        Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayerName(), fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
+        Gamestate gamestate = Server.getInstance().shot(Server.getInstance().getPlayerName(), fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
         loadGameSituation(gamestate);
     }
 

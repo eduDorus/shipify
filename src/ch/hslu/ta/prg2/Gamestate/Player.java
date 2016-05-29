@@ -6,7 +6,7 @@ public class Player {
 
     private final String name;
     private final ArrayList<Ship> ships;
-    private final ArrayList<Shoot> shoots;
+    private final ArrayList<Shot> shoots;
 
     public Player(String name) {
         this.name = name;
@@ -23,13 +23,13 @@ public class Player {
         return ships;
     }
 
-    public ArrayList<Shoot> getShoots() {
+    public ArrayList<Shot> getShoots() {
         return shoots;
     }
 
     public void addShoot(int x, int y) {
         if (hasShot(x, y) == false) {
-            shoots.add(new Shoot(x, y));
+            shoots.add(new Shot(x, y));
         }
     }
 

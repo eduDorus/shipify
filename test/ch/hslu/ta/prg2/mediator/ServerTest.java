@@ -108,7 +108,7 @@ public class ServerTest {
     public void testShoot() {
         int x = 4;
         int y = 3;
-        Gamestate result = Server.getInstance().shoot(myName, x, y);
+        Gamestate result = Server.getInstance().shot(myName, x, y);
         Field f = result.getOpponent(myName).getField()[4][3];
         //assertNotEquals(Field.WATER, f);
         assertThat(f, not(Field.WATER));
