@@ -62,11 +62,7 @@ public class KI {
         int x = s.position().getX();
         int y = s.position().getY();
         
-        if(this.field[x][y] != Field.GAP || this.field[x][y] != Field.SHIP || this.field[x][y] != Field.WATER){
-            return true;
-        }
-        
-        return false;
+        return this.field[x][y].isShootable();
     }
 
     private Shoot GetRandomShot() {

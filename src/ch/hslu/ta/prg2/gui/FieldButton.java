@@ -7,8 +7,8 @@ import javax.swing.JButton;
 
 public class FieldButton extends JButton {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private Field fieldstate;
 
     public FieldButton(int x, int y, Field fieldState) {

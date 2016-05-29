@@ -1,5 +1,20 @@
 package ch.hslu.ta.prg2.Gamestate;
 
 public enum Field {
-    WATER, SHIPHIT, SHIPDESTROYED, HIT, SHIP, GAP
+    WATER(true),
+    SHIPHIT(false),
+    SHIPDESTROYED(false),
+    HIT(false),
+    SHIP(true),
+    GAP(true);
+
+    private boolean shotable;
+
+    private Field(final boolean shotable) {
+        this.shotable = shotable;
+    }
+
+    public boolean isShootable() {
+        return this.shotable;
+    }
 }

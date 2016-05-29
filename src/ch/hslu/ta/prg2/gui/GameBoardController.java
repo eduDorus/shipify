@@ -90,9 +90,11 @@ public class GameBoardController {
 
     private void prepareShoot() {
         fieldButtonsPlayer.stream().forEach((FieldButton) -> {
-            FieldButton.addActionListener((ActionEvent e) -> {
-                opponentFieldActionListener(FieldButton);
-            });
+            if (FieldButton.getFieldstate().isShootable()) {
+                FieldButton.addActionListener((ActionEvent e) -> {
+                    opponentFieldActionListener(FieldButton);
+                });
+            }
         });
     }
 
