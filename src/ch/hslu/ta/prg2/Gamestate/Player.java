@@ -54,6 +54,19 @@ public class Player {
         return fields;
     }
 
+    public Field[][] getFieldAsOponent() {
+        Field[][] fields = getField();
+        for (int x = 0; x < 10; x++) {
+            for (int y = 0; y < 10; y++) {
+                if (fields[x][y] == Field.SHIP) {
+                    fields[x][y] = Field.WATER;
+                }
+            }
+        }
+
+        return fields;
+    }
+
     private boolean hasShip(int x, int y) {
         return ships.stream().anyMatch((s) -> (s.getPositions().stream().anyMatch((p) -> (p.getX() == x && p.getY() == y))));
     }

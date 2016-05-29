@@ -191,7 +191,7 @@ public class GameBoardController {
             button.setFieldstate(playerFields[button.getPosition().getX()][button.getPosition().getY()]);
         });
 
-        Field[][] oponentFields = state.getOpponent(Server.getInstance().getPlayerName()).getField();
+        Field[][] oponentFields = state.getOpponent(Server.getInstance().getPlayerName()).getFieldAsOponent();
         fieldButtonsOpponent.stream().forEach((button) -> {
             button.setFieldstate(oponentFields[button.getPosition().getX()][button.getPosition().getY()]);
         });
