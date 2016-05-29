@@ -21,6 +21,8 @@ public class GameBoardController {
     private int currentShipSize = 1;
     private boolean directionVertical = true;
 
+    private GameBoardPanel panel;
+
     public final int GAME_SIZE_X = 10;
     public final int GAME_SIZE_Y = 10;
 
@@ -28,7 +30,7 @@ public class GameBoardController {
 
         this.fieldButtonsPlayer = new ArrayList<>();
         this.fieldButtonsOpponent = new ArrayList<>();
-        GameBoardPanel panel = new GameBoardPanel(this);
+        panel = new GameBoardPanel(this);
         loadGameSituation(state);
         return panel;
     }
@@ -37,6 +39,8 @@ public class GameBoardController {
         updateField(state);
 
         GameSituation currentSituation = state.getSituation(Server.getInstance().getPlayerName());
+
+        panel.changePanelforGameSituation(currentSituation);
 
         currentShipSize = state.getPlayer(Server.getInstance().getPlayerName()).getShips().size() + 1;
 

@@ -1,12 +1,14 @@
 package ch.hslu.ta.prg2.gui;
 
 import ch.hslu.ta.prg2.Gamestate.Field;
+import ch.hslu.ta.prg2.Gamestate.GameSituation;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
@@ -17,6 +19,7 @@ public class GameBoardPanel extends JPanel {
     private JPanel opponentField;
     private JPanel infoField;
 
+    private JLabel infoLabel;
     private JButton turnShipButton;
 
     public GameBoardPanel(GameBoardController controller) {
@@ -35,6 +38,7 @@ public class GameBoardPanel extends JPanel {
         opponentField = new JPanel();
         infoField = new JPanel();
         turnShipButton = new JButton("Turn Ship");
+        infoLabel = new JLabel("asdf");
     }
 
     private void setOptions() {
@@ -53,6 +57,8 @@ public class GameBoardPanel extends JPanel {
         infoField.setMinimumSize(new Dimension(1200, 200));
         infoField.setSize(1200, 200);
 
+        infoLabel.setFont(font1);
+
         turnShipButton.setFont(font1);
         turnShipButton.addActionListener((ActionEvent e) -> {
             controller.ChangeShipDirection();
@@ -63,6 +69,7 @@ public class GameBoardPanel extends JPanel {
         this.add(playerField, BorderLayout.WEST);
         this.add(opponentField, BorderLayout.EAST);
         infoField.add(turnShipButton);
+        infoField.add(infoLabel);
         this.add(infoField, BorderLayout.SOUTH);
     }
 
@@ -78,6 +85,26 @@ public class GameBoardPanel extends JPanel {
                 playerField.add(btn_playerField);
                 opponentField.add(btn_opponentField);
             }
+        }
+    }
+
+    public void changePanelforGameSituation(GameSituation currentSituation) {
+
+        turnShipButton.setVisible(false);
+        switch (currentSituation) {
+            case SETSHIPS:
+                turnShipButton.setVisible(true);
+                infoLabel.setText("Bitte plazieren Sie die Schiffe.");
+                break;
+            case WAITINGONOPONENTSHIPS:
+                infoLabel.setText("Das Spiel beginnt, sobald der Gegner die Schiffe plaziert hat.");
+                break;
+            case SHOOT:
+                infoLabel.setText("Feuer frei!");
+                break;
+            case WAIT:
+                infoLabel.setText("Auf das gegnerische Feuer wird gewartet.");
+                break;
         }
     }
 }
