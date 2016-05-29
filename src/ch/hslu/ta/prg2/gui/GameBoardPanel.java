@@ -112,8 +112,10 @@ public class GameBoardPanel extends JPanel {
                 break;
             case LOSS:
                 infoLabel.setText("Leider Verloren");
+                break;
             case VICTORY:
                 infoLabel.setText("Gratulation. Sie haben gewonnen.");
+                break;
         }
     }
 }
