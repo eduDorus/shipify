@@ -31,10 +31,10 @@ public class FieldButton extends JButton {
         }
     }
 
-    public Position getPosition(){
+    public Position getPosition() {
         return new Position(x, y);
     }
-    
+
     public Field getFieldstate() {
         return fieldstate;
     }
@@ -43,12 +43,12 @@ public class FieldButton extends JButton {
         this.fieldstate = fieldstate;
         updateIcon();
     }
-    
-    public void setTempFieldColor(Color c){
+
+    public void setTempFieldColor(Color c) {
         this.setBackground(c);
     }
-    
-    public void resetTempFieldColor(){
+
+    public void resetTempFieldColor() {
         updateIcon();
     }
 

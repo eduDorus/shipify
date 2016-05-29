@@ -61,7 +61,7 @@ public class KI {
     private boolean isShotValid(Shoot s) {
         int x = s.position().getX();
         int y = s.position().getY();
-        
+
         return this.field[x][y].isShootable();
     }
 

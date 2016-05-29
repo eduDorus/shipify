@@ -89,10 +89,10 @@ public class GameBoardController {
     }
 
     private void prepareShoot() {
-        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+        fieldButtonsOpponent.stream().forEach((FieldButton) -> {
             if (FieldButton.getFieldstate().isShootable()) {
                 FieldButton.addActionListener((ActionEvent e) -> {
-                    opponentFieldActionListener(FieldButton);
+                    shot(FieldButton);
                 });
             }
         });
@@ -154,19 +154,22 @@ public class GameBoardController {
         directionVertical = !directionVertical;
     }
 
-    public void opponentFieldActionListener(FieldButton fieldButton) {
+    private void shot(FieldButton fieldButton) {
+        System.out.println("ch.hslu.ta.prg2.gui.GameBoardController.shot()");
         Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayerName(), fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
-
-        Field[][] field = gamestate.getOpponent(Server.getInstance().getPlayerName()).getField();
-        fieldButtonsOpponent.stream().forEach((_item) -> {
-            _item.setFieldstate(field[_item.getPosition().getX()][_item.getPosition().getY()]);
-        });
+        loadGameSituation(gamestate);
     }
 
     private void updateField(Gamestate state) {
-        Field[][] field = state.getPlayer(Server.getInstance().getPlayerName()).getField();
+        Field[][] playerFields = state.getPlayer(Server.getInstance().getPlayerName()).getField();
+
         fieldButtonsPlayer.stream().forEach((button) -> {
-            button.setFieldstate(field[button.getPosition().getX()][button.getPosition().getY()]);
+            button.setFieldstate(playerFields[button.getPosition().getX()][button.getPosition().getY()]);
+        });
+
+        Field[][] oponentFields = state.getOpponent(Server.getInstance().getPlayerName()).getField();
+        fieldButtonsOpponent.stream().forEach((button) -> {
+            button.setFieldstate(oponentFields[button.getPosition().getX()][button.getPosition().getY()]);
         });
     }
 
