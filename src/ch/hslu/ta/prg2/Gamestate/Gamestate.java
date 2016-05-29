@@ -63,7 +63,7 @@ public class Gamestate implements Serializable {
         }
 
         //Player is allowed to shoot, if he has shoot the same amount or less than his oponent
-        if (player.getShoots().size() <= oponent.getShips().size()) {
+        if (player.getShoots().size() >= oponent.getShoots().size()) {
             return GameSituation.SHOOT;
         }
 
