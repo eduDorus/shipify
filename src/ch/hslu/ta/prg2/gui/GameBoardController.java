@@ -21,6 +21,9 @@ public class GameBoardController {
     private int currentShipSize = 1;
     private boolean directionVertical = true;
 
+    public final int GAME_SIZE_X = 10;
+    public final int GAME_SIZE_Y = 10;
+
     public GameBoardPanel startGame(Gamestate state) {
 
         this.fieldButtonsPlayer = new ArrayList<>();
@@ -31,15 +34,23 @@ public class GameBoardController {
     }
 
     private void loadGameSituation(Gamestate state) {
+        updateField(state);
+
         GameSituation currentSituation = state.getSituation(Server.getInstance().getPlayerName());
+
+        currentShipSize = state.getPlayer(Server.getInstance().getPlayerName()).getShips().size() + 1;
+
         switch (currentSituation) {
             case SETSHIPS:
                 prepareSetShips();
                 break;
             case WAITINGONOPONENTSHIPS:
+                cleanUpAferShipsSet();
 
                 break;
             case SHOOT:
+                cleanUpAferShipsSet();
+
                 prepareShoot();
                 break;
             case WAIT:
@@ -50,6 +61,14 @@ public class GameBoardController {
 
     private void prepareSetShips() {
         fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+
+            //Remove all Mouslistner, but not the first one.
+            for (MouseListener mou : FieldButton.getMouseListeners()) {
+                if (mou != FieldButton.getMouseListeners()[0]) {
+                    FieldButton.removeMouseListener(mou);
+                }
+            }
+
             FieldButton.addMouseListener(new MouseAdapter() {
 
                 @Override
@@ -84,10 +103,10 @@ public class GameBoardController {
 
         //Return if ship is out of bounds
         if (directionVertical) {
-            if (btn_playerField.getPosition().getY() + currentShipSize > 10) {
+            if (btn_playerField.getPosition().getY() + currentShipSize > GAME_SIZE_Y) {
                 return;
             }
-        } else if (btn_playerField.getPosition().getX() + currentShipSize > 10) {
+        } else if (btn_playerField.getPosition().getX() + currentShipSize > GAME_SIZE_X) {
             return;
         }
 
@@ -152,11 +171,14 @@ public class GameBoardController {
             for (ActionListener act : button.getActionListeners()) {
                 button.removeActionListener(act);
             }
+        });
+    }
 
-            if (currentShipSize > 4) {
-                for (MouseListener mou : button.getMouseListeners()) {
-                    button.removeMouseListener(mou);
-                }
+    private void cleanUpAferShipsSet() {
+        removeAllTempColorAndListener();
+        fieldButtonsPlayer.stream().forEach((button) -> {
+            for (MouseListener mou : button.getMouseListeners()) {
+                button.removeMouseListener(mou);
             }
         });
     }
@@ -168,8 +190,6 @@ public class GameBoardController {
 
         Gamestate state = Server.getInstance().setShips(Server.getInstance().getPlayerName(), ships);
 
-        updateField(state);
-
-        currentShipSize++;
+        loadGameSituation(state);
     }
 }

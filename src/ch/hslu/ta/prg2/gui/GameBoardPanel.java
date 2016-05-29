@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class GameBoardPanel extends JPanel {
 
-    private GameBoardController controller;
+    private final GameBoardController controller;
 
     private JPanel playerField;
     private JPanel opponentField;
@@ -67,8 +67,8 @@ public class GameBoardPanel extends JPanel {
     }
 
     private void createButtons() {
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < 10; y++) {
+        for (int x = 0; x < controller.GAME_SIZE_X; x++) {
+            for (int y = 0; y < controller.GAME_SIZE_Y; y++) {
                 FieldButton btn_playerField = new FieldButton(x, y, Field.WATER);
                 controller.fieldButtonsPlayer.add(btn_playerField);
 
