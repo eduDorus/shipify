@@ -89,7 +89,13 @@ public class GameBoardController {
     }
 
     private void prepareShoot() {
+
         fieldButtonsOpponent.stream().forEach((FieldButton) -> {
+
+            for (ActionListener act : FieldButton.getActionListeners()) {
+                FieldButton.removeActionListener(act);
+            }
+
             if (FieldButton.getFieldstate().isShootable()) {
                 FieldButton.addActionListener((ActionEvent e) -> {
                     shot(FieldButton);
