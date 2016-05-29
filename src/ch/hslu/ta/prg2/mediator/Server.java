@@ -35,7 +35,7 @@ public class Server implements ServerInterface {
 
         KI ki = new KI(this.gamestate);
         ki.setShips();
-        
+
         return gamestate;
     }
 
@@ -50,6 +50,10 @@ public class Server implements ServerInterface {
     @Override
     public Gamestate shoot(String name, int x, int y) {
         gamestate.getOpponent(name).addShoot(x, y);
+        if (gamestate.getOpponent(name).getName().equals("bot")) {
+            KI ki = new KI(this.gamestate);
+            ki.shoot();
+        }
         return gamestate;
     }
 
