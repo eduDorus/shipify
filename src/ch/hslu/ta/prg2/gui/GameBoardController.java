@@ -48,16 +48,24 @@ public class GameBoardController {
             case SETSHIPS:
                 prepareSetShips();
                 break;
+            case WAITINGFONOPONENT:
+                cleanUpAferShipsSet();
+                break;
             case WAITINGONOPONENTSHIPS:
                 cleanUpAferShipsSet();
-
                 break;
             case SHOOT:
                 cleanUpAferShipsSet();
-
                 prepareShoot();
                 break;
             case WAIT:
+                noShotsAllowed();
+
+                break;
+            case LOSS:
+            case VICTORY:
+
+            case ERROR:
 
                 break;
         }
@@ -73,18 +81,21 @@ public class GameBoardController {
                 }
             }
 
-            FieldButton.addMouseListener(new MouseAdapter() {
+            if (FieldButton.getFieldstate() != Field.SHIP) {
+                FieldButton.addMouseListener(new MouseAdapter() {
 
-                @Override
-                public void mouseEntered(MouseEvent me) {
-                    displayShip(FieldButton);
-                }
+                    @Override
+                    public void mouseEntered(MouseEvent me) {
+                        displayShip(FieldButton);
+                    }
 
-                @Override
-                public void mouseExited(MouseEvent me) {
-                    removeAllTempColorAndListener();
-                }
-            });
+                    @Override
+                    public void mouseExited(MouseEvent me) {
+                        removeAllTempColorAndListener();
+                    }
+                });
+            }
+
         });
     }
 
@@ -100,6 +111,14 @@ public class GameBoardController {
                 FieldButton.addActionListener((ActionEvent e) -> {
                     shot(FieldButton);
                 });
+            }
+        });
+    }
+
+    private void noShotsAllowed() {
+        fieldButtonsOpponent.stream().forEach((FieldButton) -> {
+            for (ActionListener act : FieldButton.getActionListeners()) {
+                FieldButton.removeActionListener(act);
             }
         });
     }
@@ -161,7 +180,6 @@ public class GameBoardController {
     }
 
     private void shot(FieldButton fieldButton) {
-        System.out.println("ch.hslu.ta.prg2.gui.GameBoardController.shot()");
         Gamestate gamestate = Server.getInstance().shoot(Server.getInstance().getPlayerName(), fieldButton.getPosition().getX(), fieldButton.getPosition().getY());
         loadGameSituation(gamestate);
     }
