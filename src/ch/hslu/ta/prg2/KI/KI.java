@@ -93,7 +93,7 @@ public class KI {
         int x = s.position().getX();
         int y = s.position().getY();
 
-        if (x > 9 || y > 9) {
+        if (x < 0 || x > 9 || y < 0 || y > 9) {
             return false;
         }
 
