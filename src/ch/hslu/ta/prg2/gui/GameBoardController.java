@@ -73,7 +73,7 @@ public class GameBoardController {
     }
 
     private void prepareSetShips() {
-        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
+        fieldButtonsPlayer.forEach((FieldButton) -> {
 
             //Remove all Mouslistner, but not the first one.
             for (MouseListener mou : FieldButton.getMouseListeners()) {
@@ -102,7 +102,7 @@ public class GameBoardController {
 
     private void prepareShoot() {
 
-        fieldButtonsOpponent.stream().forEach((FieldButton) -> {
+        fieldButtonsOpponent.forEach((FieldButton) -> {
 
             for (ActionListener act : FieldButton.getActionListeners()) {
                 FieldButton.removeActionListener(act);
@@ -117,7 +117,7 @@ public class GameBoardController {
     }
 
     private void noShotsAllowed() {
-        fieldButtonsOpponent.stream().forEach((FieldButton) -> {
+        fieldButtonsOpponent.forEach((FieldButton) -> {
             for (ActionListener act : FieldButton.getActionListeners()) {
                 FieldButton.removeActionListener(act);
             }
@@ -154,8 +154,8 @@ public class GameBoardController {
 
         ArrayList<FieldButton> buttonsWithShip = new ArrayList<>();
 
-        fieldButtonsPlayer.stream().forEach((FieldButton) -> {
-            currentShip.stream().forEach((shipPosition) -> {
+        fieldButtonsPlayer.forEach((FieldButton) -> {
+            currentShip.forEach((shipPosition) -> {
                 if (FieldButton.getPosition().equals(shipPosition)) {
                     buttonsWithShip.add(FieldButton);
                 }
@@ -188,18 +188,18 @@ public class GameBoardController {
     private void updateField(Gamestate state) {
         Field[][] playerFields = state.getPlayer(Server.getInstance().getPlayerName()).getField();
 
-        fieldButtonsPlayer.stream().forEach((button) -> {
+        fieldButtonsPlayer.forEach((button) -> {
             button.setFieldstate(playerFields[button.getPosition().getX()][button.getPosition().getY()]);
         });
 
         Field[][] oponentFields = state.getOpponent(Server.getInstance().getPlayerName()).getFieldAsOponent();
-        fieldButtonsOpponent.stream().forEach((button) -> {
+        fieldButtonsOpponent.forEach((button) -> {
             button.setFieldstate(oponentFields[button.getPosition().getX()][button.getPosition().getY()]);
         });
     }
 
     private void removeAllTempColorAndListener() {
-        fieldButtonsPlayer.stream().forEach((button) -> {
+        fieldButtonsPlayer.forEach((button) -> {
             button.resetTempFieldColor();
 
             for (ActionListener act : button.getActionListeners()) {
@@ -210,7 +210,7 @@ public class GameBoardController {
 
     private void cleanUpAferShipsSet() {
         removeAllTempColorAndListener();
-        fieldButtonsPlayer.stream().forEach((button) -> {
+        fieldButtonsPlayer.forEach((button) -> {
             for (MouseListener mou : button.getMouseListeners()) {
                 button.removeMouseListener(mou);
             }

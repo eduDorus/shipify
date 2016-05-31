@@ -35,7 +35,7 @@ public class KI {
 
         ArrayList<ArrayList<Position>> positions = new ArrayList<>();
 
-        ships.stream().forEach((s) -> {
+        ships.forEach((s) -> {
             positions.add(s.getPositions());
         });
 
